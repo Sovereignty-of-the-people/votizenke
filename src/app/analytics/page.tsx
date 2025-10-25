@@ -137,85 +137,55 @@ export default function Analytics() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Navigation */}
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
       <Navigation />
-
+      
       <div className="p-6 max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          className="mb-12 relative"
         >
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-            <div>
-              <Badge className="mb-4 bg-red-600 text-white">Campaign Impact Dashboard</Badge>
-              <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                Voter Registration Revolution
-              </h1>
-              <p className="text-xl text-gray-600">
-                Real-time metrics driving Kenya's democratic transformation
-              </p>
-            </div>
-            <div className="flex gap-3 mt-4 md:mt-0">
-              <Button 
-                variant="outline" 
-                className="border-green-600 text-green-600 hover:bg-green-50"
-                onClick={handleExportData}
-                disabled={isLoading}
-              >
-                <Download className="mr-2 h-4 w-4" />
-                {isLoading ? "Exporting..." : "Export Report"}
-              </Button>
-              <Link href="/auth/signin">
-                <Button className="bg-green-600 hover:bg-green-700">
-                  Join Movement
-                </Button>
-              </Link>
+          {/* Futuristic Background Effects */}
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 opacity-20">
+              <div className="h-full w-full" style={{
+                backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(0, 255, 0, 0.05) 25%, rgba(0, 255, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 0, 0.05) 75%, rgba(255, 0, 0, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 0, 0.05) 25%, rgba(0, 255, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 0, 0.05) 75%, rgba(255, 0, 0, 0.05) 76%, transparent 77%, transparent)`,
+                backgroundSize: '60px 60px'
+              }}></div>
             </div>
           </div>
-
-          {/* Filters */}
-          <div className="flex flex-wrap gap-4 p-4 bg-white rounded-lg shadow-sm">
-            <div className="flex items-center gap-2">
-              <Filter className="h-4 w-4 text-gray-500" />
-              <span className="text-sm font-medium text-gray-700">Filters:</span>
+          
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-5xl md:text-7xl font-black text-white mb-4">
+                Impact <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-red-400">Analytics</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+                Track your revolutionary influence and contribution to Kenyan democracy
+              </p>
             </div>
-            <select 
-              value={selectedCounty} 
-              onChange={(e) => setSelectedCounty(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-            >
-              <option value="all">All Counties</option>
-              {counties.slice(1).map((county) => (
-                <option key={county} value={county}>
-                  {county.charAt(0).toUpperCase() + county.slice(1).replace('-', ' ')}
-                </option>
-              ))}
-            </select>
-            <select 
-              value={selectedAgeGroup} 
-              onChange={(e) => setSelectedAgeGroup(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-            >
-              {ageGroups.map((group) => (
-                <option key={group.value} value={group.value}>
-                  {group.label}
-                </option>
-              ))}
-            </select>
-            <select 
-              value={timeRange} 
-              onChange={(e) => setTimeRange(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-            >
-              {timeRanges.map((range) => (
-                <option key={range.value} value={range.value}>
-                  {range.label}
-                </option>
-              ))}
-            </select>
+            <div className="flex gap-4">
+              <Button variant="outline" className="flex items-center gap-2 border-green-500 text-green-400 hover:bg-green-500 hover:text-black font-bold transition-all duration-300">
+                <Filter className="h-5 w-5" />
+                FILTERS
+              </Button>
+              <Button className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-300">
+                <Download className="h-5 w-5" />
+                EXPORT REPORT
+              </Button>
+            </div>
+          </div>
+          
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-green-900/50 to-red-900/50 backdrop-blur-sm px-6 py-3 rounded-full border border-green-500/30">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-green-400 font-bold">LIVE DATA</span>
+            </div>
+            <span className="text-gray-400">•</span>
+            <span className="text-white font-medium">REAL-TIME ANALYTICS</span>
           </div>
         </motion.div>
 

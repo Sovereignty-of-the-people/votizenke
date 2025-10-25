@@ -17,6 +17,44 @@ export default function Dashboard() {
   const [learningProgress, setLearningProgress] = useState(25)
   const [showVoterPopup, setShowVoterPopup] = useState(false)
 
+  const stats = [
+    {
+      title: "Civic Score",
+      value: "78",
+      icon: Award,
+      color: "text-green-600",
+      bgColor: "bg-green-100",
+    },
+    {
+      title: "Invites Sent",
+      value: inviteCount,
+      icon: Users,
+      color: "text-blue-600",
+      bgColor: "bg-blue-100",
+    },
+    {
+      title: "Learning Progress",
+      value: `${learningProgress}%`,
+      icon: BookOpen,
+      color: "text-purple-600",
+      bgColor: "bg-purple-100",
+    },
+    {
+      title: "Community Posts",
+      value: "12",
+      icon: MessageSquare,
+      color: "text-orange-600",
+      bgColor: "bg-orange-100",
+    },
+  ];
+
+  const handleInvite = () => {
+    setInviteCount(inviteCount + 1);
+    // Here you would typically trigger a share dialog
+    alert("Share with your friends on WhatsApp!");
+  };
+
+
   // Check authentication status
   useEffect(() => {
     const checkAuth = () => {
@@ -59,77 +97,80 @@ export default function Dashboard() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-green-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading your dashboard...</p>
+          <div className="relative">
+            <div className="animate-spin rounded-full h-16 w-16 border-4 border-green-500/20 border-t-green-500 mx-auto mb-6"></div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-8 h-8 bg-green-500 rounded-full animate-pulse"></div>
+            </div>
+          </div>
+          <p className="text-gray-300 text-lg font-medium">Initializing Revolutionary Dashboard...</p>
+          <div className="mt-4 flex justify-center gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+          </div>
         </div>
       </div>
     )
   }
 
-  const handleInvite = () => {
-    const message = encodeURIComponent(
-      "Join me on VotizenKE! Let's empower Kenyan youth to register, learn, and mobilize for democracy. 🇰🇪"
-    )
-    const url = encodeURIComponent("https://votizenke.vercel.app")
-    
-    window.open(
-      `https://wa.me/?text=${message}%20${url}`,
-      "_blank"
-    )
-    setInviteCount(inviteCount + 1)
-  }
-
-  const stats = [
-    {
-      title: "Friends Invited",
-      value: inviteCount,
-      icon: Users,
-      color: "text-green-600",
-      bgColor: "bg-green-100"
-    },
-    {
-      title: "Learning Progress",
-      value: `${learningProgress}%`,
-      icon: BookOpen,
-      color: "text-blue-600",
-      bgColor: "bg-blue-100"
-    },
-    {
-      title: "Discussions Joined",
-      value: "12",
-      icon: MessageSquare,
-      color: "text-purple-600",
-      bgColor: "bg-purple-100"
-    },
-    {
-      title: "Civic Impact Score",
-      value: "85",
-      icon: TrendingUp,
-      color: "text-red-600",
-      bgColor: "bg-red-100"
-    }
-  ]
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-green-50">
-      {/* Navigation */}
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
       <Navigation />
-
+      
       <div className="p-6 max-w-7xl mx-auto">
-        {/* Welcome Section */}
+        {/* Welcome Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          className="mb-12 relative"
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            Welcome back, Citizen! 🇰🇪
-          </h1>
-          <p className="text-xl text-gray-600">
-            Your civic journey continues. Keep making a difference!
-          </p>
+          {/* Futuristic Background Effects */}
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 opacity-20">
+              <div className="h-full w-full" style={{
+                backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(0, 255, 0, 0.05) 25%, rgba(0, 255, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 0, 0.05) 75%, rgba(255, 0, 0, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 0, 0.05) 25%, rgba(0, 255, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 0, 0.05) 75%, rgba(255, 0, 0, 0.05) 76%, transparent 77%, transparent)`,
+                backgroundSize: '60px 60px'
+              }}></div>
+            </div>
+          </div>
+          
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-5xl md:text-7xl font-black text-white mb-4">
+                Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-red-400">{user?.name || 'Revolutionary'}</span>! 🇰🇪
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+                Your revolutionary command center - Track your journey to reclaim Kenya
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <Link href="/community">
+                <Button variant="outline" className="flex items-center gap-2 border-green-500 text-green-400 hover:bg-green-500 hover:text-black font-bold transition-all duration-300">
+                  <MessageSquare className="h-5 w-5" />
+                  COMMUNITY
+                </Button>
+              </Link>
+              <Link href="/leadership">
+                <Button className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-300">
+                  <Award className="h-5 w-5" />
+                  LEADERSHIP ACADEMY
+                </Button>
+              </Link>
+            </div>
+          </div>
+          
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-green-900/50 to-red-900/50 backdrop-blur-sm px-6 py-3 rounded-full border border-green-500/30">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-green-400 font-bold">REVOLUTIONARY ACTIVE</span>
+            </div>
+            <span className="text-gray-400">•</span>
+            <span className="text-white font-medium">LEVEL {Math.floor(learningProgress/25) + 1} LEADER</span>
+          </div>
         </motion.div>
 
         {/* Stats Grid */}

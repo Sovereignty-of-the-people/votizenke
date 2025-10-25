@@ -116,23 +116,50 @@ export default function LearnPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-green-50">
-      {/* Navigation */}
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
       <Navigation />
-
+      
       <div className="p-6 max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          className="mb-12 relative"
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            Learning Hub
-          </h1>
-          <p className="text-xl text-gray-600">
-            Master your civic rights and become an informed citizen
+          {/* Futuristic Background Effects */}
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 opacity-20">
+              <div className="h-full w-full" style={{
+                backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(0, 255, 0, 0.05) 25%, rgba(0, 255, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 0, 0.05) 75%, rgba(255, 0, 0, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 0, 0.05) 25%, rgba(0, 255, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 0, 0.05) 75%, rgba(255, 0, 0, 0.05) 76%, transparent 77%, transparent)`,
+                backgroundSize: '60px 60px'
+              }}></div>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-4 mb-6">
+            <div className="relative">
+              <div className="p-4 rounded-xl bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-blue-500/30">
+                <BookOpen className="h-12 w-12 text-blue-400" />
+              </div>
+              <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-black text-white">
+              Civic <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Education</span>
+            </h1>
+          </div>
+          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl leading-relaxed">
+            Master your revolutionary rights, responsibilities, and the power of your vote through comprehensive lessons designed for Kenyan youth
           </p>
+          
+          {/* Status Badge */}
+          <div className="mt-8 inline-flex items-center gap-3 bg-gradient-to-r from-blue-900/50 to-purple-900/50 backdrop-blur-sm px-6 py-3 rounded-full border border-blue-500/30">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+              <span className="text-blue-400 font-bold">EDUCATION ACTIVE</span>
+            </div>
+            <span className="text-gray-400">•</span>
+            <span className="text-white font-medium">12 LESSONS AVAILABLE</span>
+          </div>
         </motion.div>
 
         {/* Progress Overview */}

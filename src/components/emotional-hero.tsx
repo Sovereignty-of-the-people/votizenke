@@ -13,16 +13,46 @@ export function EmotionalHero() {
   const slides = [
     {
       id: 1,
+      title: "Your Voice Matters",
+      subtitle: "Join thousands of Kenyan youth demanding change",
+      description: "From protests to policies - be the change. The future of Kenya is in your hands.",
+      image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=1200&h=600&fit=crop",
+      cta: "Start Your Journey",
+      ctaLink: "/voter-registration",
+      stats: "50,000+ Youth Mobilized"
+    },
+    {
+      id: 2,
+      title: "Democracy is Action",
+      subtitle: "From protests to policies - be the change",
+      description: "From the streets of Nairobi to Mombasa, Kenyan youth are waking up. We saw it in the demos - our power when united.",
+      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&h=600&fit=crop",
+      cta: "Get Involved",
+      ctaLink: "/community",
+      stats: "23 Cities Active"
+    },
+    {
+      id: 3,
+      title: "Register. Vote. Lead.",
+      subtitle: "The future of Kenya is in your hands",
+      description: "They want us to remain silent while they loot our country. Your voter card is your weapon against corruption.",
+      image: "https://images.unsplash.com/photo-1581833971358-2c8b55038a29?w=1200&h=600&fit=crop",
+      cta: "Register to Vote",
+      ctaLink: "/voter-registration",
+      stats: "12,000+ New Voters"
+    },
+    {
+      id: 4,
       title: "OUR TAXES, THEIR EMPIRES",
       subtitle: "Stop Funding Political Elites",
       description: "Every shilling in their pockets comes from our taxes. It's time we take back control of our resources and our future.",
       image: "https://images.unsplash.com/photo-1559028012-c746a5aee2db?w=1200&h=600&fit=crop&crop=entropy&auto=format",
       cta: "Register to Vote",
-      ctaLink: "/auth/signin",
+      ctaLink: "/voter-registration",
       stats: "50,000+ Youth Mobilized"
     },
     {
-      id: 2,
+      id: 5,
       title: "GEN Z RISING",
       subtitle: "The Revolution Has Begun",
       description: "From the streets of Nairobi to Mombasa, Kenyan youth are waking up. We saw it in the demos - our power when united.",
@@ -32,24 +62,14 @@ export function EmotionalHero() {
       stats: "23 Cities Active"
     },
     {
-      id: 3,
+      id: 6,
       title: "YOUR VOTE IS YOUR VOICE",
       subtitle: "Make It Count",
       description: "They want us to remain silent while they loot our country. Your voter card is your weapon against corruption.",
       image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1200&h=600&fit=crop&crop=entropy&auto=format",
       cta: "Register Now",
-      ctaLink: "/auth/signin",
+      ctaLink: "/voter-registration",
       stats: "12,000+ New Voters"
-    },
-    {
-      id: 4,
-      title: "STOP BEING USED",
-      subtitle: "Break the chains.",
-      description: "Political elites use our taxes to build their empires while we struggle. ",
-      image: "https://images.unsplash.com/photo-1559028012-c746a5aee2db?w=400&h=300&fit=crop&crop=entropy&auto=format",
-      cta: "ACTIVATE",
-      ctaLink: "/auth/signin",
-      stats: "1,200+ Civic Actions"
     }
   ]
 
@@ -110,11 +130,11 @@ export function EmotionalHero() {
               {slides[currentSlide].description}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 mb-12">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
               <Link href={slides[currentSlide].ctaLink}>
-                <Button size="lg" className="bg-gradient-to-r from-red-600 to-green-600 hover:from-red-700 hover:to-green-700 text-white px-10 py-5 text-xl font-bold border-2 border-white/30 shadow-2xl shadow-red-500/30 hover:shadow-red-500/50 transition-all">
+                <Button size="lg" className="bg-gradient-to-r from-red-600 to-green-600 hover:from-red-700 hover:to-green-700 text-white px-8 py-4 text-lg font-bold border-2 border-white/30 shadow-lg">
                   {slides[currentSlide].cta}
-                  <ArrowRight className="ml-3 h-6 w-6" />
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               
@@ -122,7 +142,7 @@ export function EmotionalHero() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-white text-white hover:bg-white hover:text-black px-10 py-5 text-xl font-bold transition-all"
+                  className="border-2 border-red-400 bg-red-600 text-white hover:bg-red-700 hover:border-red-300 px-8 py-4 text-lg font-bold shadow-lg"
                 >
                   See Impact
                 </Button>

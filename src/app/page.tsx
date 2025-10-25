@@ -30,7 +30,7 @@ export default function Home() {
       description: "Every shilling in their pockets comes from our taxes. It's time we take back control of our resources and our future.",
       image: "https://images.unsplash.com/photo-1559028012-c746a5aee2db?w=1200&h=600&fit=crop&crop=entropy&auto=format",
       cta: "Register to Vote",
-      ctaLink: "/auth/signin",
+      ctaLink: "/voter-registration",
       overlay: "bg-gradient-to-r from-black/90 via-red-900/80 to-black/90"
     },
     {
@@ -48,7 +48,7 @@ export default function Home() {
       description: "They want us to remain silent while they loot our country. Your voter card is your weapon against corruption.",
       image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1200&h=600&fit=crop&crop=entropy&auto=format",
       cta: "Register Now",
-      ctaLink: "/auth/signin",
+      ctaLink: "/voter-registration",
       overlay: "bg-gradient-to-br from-black/90 via-white/10 to-black/90"
     }
   ]
@@ -67,7 +67,8 @@ export default function Home() {
       description: "Your voter card is your power. Without it, you're just watching them steal our future.",
       icon: Users,
       color: "bg-gradient-to-br from-green-600 to-green-800",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop&crop=entropy&auto=format"
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop&crop=entropy&auto=format",
+      link: "/voter-registration"
     },
     {
       title: "UNITE FOR CHANGE",
@@ -154,42 +155,175 @@ export default function Home() {
 
       {/* Sections are now consolidated into the EmotionalHero component */}
 
-      {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge className="mb-4 bg-green-100 text-green-800 text-sm px-4 py-2">
-              Platform Features
+      {/* Features Section - Futuristic Design */}
+      <section className="py-24 bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
+        {/* Futuristic Background Effects */}
+        <div className="absolute inset-0">
+          {/* Digital Grid Pattern */}
+          <div className="absolute inset-0 opacity-15">
+            <div className="h-full w-full" style={{
+              backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(0, 255, 0, 0.08) 25%, rgba(0, 255, 0, 0.08) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 0, 0.08) 25%, rgba(0, 255, 0, 0.08) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent)`,
+              backgroundSize: '60px 60px'
+            }}></div>
+          </div>
+          {/* Animated Data Streams */}
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-green-500/20 to-transparent animate-pulse"></div>
+            <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-red-500/20 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
+            <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent animate-pulse" style={{animationDelay: '2s'}}></div>
+          </div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <Badge className="mb-6 bg-gradient-to-r from-green-600 to-white text-black border-2 border-green-400 text-lg px-6 py-3 font-bold shadow-lg shadow-green-500/30">
+              ⚡ PLATFORM ARSENAL
             </Badge>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Everything You Need to Create Change
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
+              Revolutionary Tools for <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-red-400">Digital Activism</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive tools and resources designed specifically for Kenyan youth engagement
+            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Cutting-edge technology and strategic resources engineered specifically for Kenyan youth 
+              to dismantle corrupt systems and build a new democratic future.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow border-0 shadow-sm">
-                <CardHeader>
-                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg ${feature.color} mb-4`}>
-                    <feature.icon className="h-6 w-6" />
+              <div key={index} className="group relative">
+                {/* Futuristic Card */}
+                <div className="relative bg-gradient-to-br from-gray-800/80 to-black/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700 hover:border-green-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/20 hover:transform hover:scale-105 h-full">
+                  {/* Corner Tech Brackets */}
+                  <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-green-500 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-red-500 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-red-500 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-green-500 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                  
+                  {/* Icon Container with Glow */}
+                  <div className="flex justify-center mb-6">
+                    <div className="relative">
+                      <div className={`absolute inset-0 ${feature.color} rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity`}></div>
+                      <div className={`relative p-4 rounded-xl bg-gradient-to-br from-gray-900 to-black border border-gray-700 ${feature.color}`}>
+                        <feature.icon className="h-8 w-8" />
+                      </div>
+                    </div>
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                  <CardDescription className="text-gray-600">
-                    {feature.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Link href={feature.link}>
-                    <Button variant="ghost" className="p-0 h-auto font-medium text-green-600 hover:text-green-700">
-                      Explore <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+                  
+                  {/* Content */}
+                  <div className="text-center">
+                    <h3 className="text-xl font-black text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-green-400 group-hover:to-red-400 transition-all duration-300">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-400 mb-6 leading-relaxed">
+                      {feature.description}
+                    </p>
+                    
+                    {/* Futuristic Button */}
+                    <Link href={feature.link}>
+                      <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600/20 to-red-600/20 border border-green-500/30 rounded-full hover:border-green-400 hover:from-green-600/30 hover:to-red-600/30 transition-all duration-300 group">
+                        <span className="text-green-400 font-bold text-sm">ACTIVATE</span>
+                        <ArrowRight className="h-4 w-4 text-green-400 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  </div>
+                  
+                  {/* Scanning Line Effect */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+              </div>
             ))}
+          </div>
+          
+          {/* Bottom Status Indicator */}
+          <div className="text-center mt-16">
+            <div className="inline-flex items-center gap-6 bg-gradient-to-r from-green-900/30 to-red-900/30 backdrop-blur-sm px-8 py-4 rounded-full border border-green-500/20">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-green-400 font-bold text-sm">SYSTEMS ONLINE</span>
+              </div>
+              <span className="text-gray-500">•</span>
+              <span className="text-white font-medium text-sm">6 ACTIVATION MODULES READY</span>
+              <span className="text-gray-500">•</span>
+              <span className="text-red-400 font-bold text-sm">REVOLUTION MODE</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Impact Stats Section - Futuristic Design */}
+      <section className="py-24 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
+        {/* Futuristic Background Effects */}
+        <div className="absolute inset-0">
+          {/* Digital Grid */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="h-full w-full" style={{
+              backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(0, 255, 0, 0.05) 25%, rgba(0, 255, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 0, 0.05) 75%, rgba(255, 0, 0, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 0, 0.05) 25%, rgba(0, 255, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 0, 0.05) 75%, rgba(255, 0, 0, 0.05) 76%, transparent 77%, transparent)`,
+              backgroundSize: '50px 50px'
+            }}></div>
+          </div>
+          {/* Animated Scanning Effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/10 to-transparent animate-pulse"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <Badge className="mb-6 bg-gradient-to-r from-green-600 to-red-600 text-white border-2 border-green-400 text-lg px-6 py-3 font-bold shadow-lg shadow-green-500/30">
+              📊 LIVE IMPACT METRICS
+            </Badge>
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
+              Making Real <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-red-400">Impact</span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Across Kenya, youth are rising up and taking back power. These aren't just numbers - 
+              they're revolution in motion, powered by your voter registration and civic action.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {impactStats.map((stat, index) => (
+              <div key={index} className="relative group">
+                {/* Card with futuristic styling */}
+                <div className="relative bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-xl p-8 rounded-2xl border border-gray-800 hover:border-green-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-green-500/20 hover:transform hover:scale-105">
+                  {/* Corner accents */}
+                  <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-green-500 rounded-tl-lg"></div>
+                  <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-red-500 rounded-tr-lg"></div>
+                  <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-red-500 rounded-bl-lg"></div>
+                  <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-green-500 rounded-br-lg"></div>
+                  
+                  {/* Icon with glow effect */}
+                  <div className="flex justify-center mb-6">
+                    <div className={`p-4 rounded-xl ${stat.color} bg-gradient-to-br from-gray-800 to-gray-900 shadow-lg`}>
+                      <stat.icon className="h-8 w-8 text-white" />
+                    </div>
+                  </div>
+                  
+                  {/* Value with animated effect */}
+                  <div className="text-center">
+                    <div className="text-3xl md:text-4xl font-black text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-green-400 group-hover:to-red-400 transition-all duration-300">
+                      {stat.value}
+                    </div>
+                    <div className="text-gray-400 font-medium text-sm uppercase tracking-wider">
+                      {stat.label}
+                    </div>
+                  </div>
+                  
+                  {/* Subtle data stream effect */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Bottom call-to-action */}
+          <div className="text-center mt-16">
+            <div className="inline-flex items-center gap-4 bg-gradient-to-r from-green-900/50 to-red-900/50 backdrop-blur-sm px-8 py-4 rounded-full border border-green-500/30">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-green-400 font-bold">LIVE DATA</span>
+              </div>
+              <span className="text-gray-400">•</span>
+              <span className="text-white font-medium">Updated in real-time as youth register</span>
+            </div>
           </div>
         </div>
       </section>
@@ -216,7 +350,7 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/auth/signin">
+                <Link href="/voter-registration">
                   <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-bold w-full sm:w-auto">
                     Register to Vote Now <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
@@ -230,31 +364,31 @@ export default function Home() {
             </div>
             
             <div className="hidden lg:grid grid-cols-2 gap-6">
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                <Users className="h-8 w-8 text-red-400 mb-4" />
-                <h3 className="font-semibold text-lg mb-2 text-white">Youth Unity</h3>
-                <p className="text-gray-300">
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 text-center">
+                <Users className="h-8 w-8 text-red-400 mb-4 mx-auto" />
+                <h3 className="font-semibold text-lg mb-2 text-white text-center">Youth Unity</h3>
+                <p className="text-gray-300 text-center">
                   Breaking tribal chains that politicians use to divide us
                 </p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                <Shield className="h-8 w-8 text-green-400 mb-4" />
-                <h3 className="font-semibold text-lg mb-2 text-white">Voter Power</h3>
-                <p className="text-gray-300">
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 text-center">
+                <Shield className="h-8 w-8 text-green-400 mb-4 mx-auto" />
+                <h3 className="font-semibold text-lg mb-2 text-white text-center">Voter Power</h3>
+                <p className="text-gray-300 text-center">
                   Millions of youth votes can change Kenya's destiny forever
                 </p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                <Target className="h-8 w-8 text-blue-400 mb-4" />
-                <h3 className="font-semibold text-lg mb-2 text-white">Resource Justice</h3>
-                <p className="text-gray-300">
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 text-center">
+                <Target className="h-8 w-8 text-blue-400 mb-4 mx-auto" />
+                <h3 className="font-semibold text-lg mb-2 text-white text-center">Resource Justice</h3>
+                <p className="text-gray-300 text-center">
                   Taking back our taxes and resources from political thieves
                 </p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                <Zap className="h-8 w-8 text-yellow-400 mb-4" />
-                <h3 className="font-semibold text-lg mb-2 text-white">Revolution Now</h3>
-                <p className="text-gray-300">
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 text-center">
+                <Zap className="h-8 w-8 text-yellow-400 mb-4 mx-auto" />
+                <h3 className="font-semibold text-lg mb-2 text-white text-center">Revolution Now</h3>
+                <p className="text-gray-300 text-center">
                   The time for talk is over. The revolution starts with you.
                 </p>
               </div>
@@ -268,37 +402,37 @@ export default function Home() {
                   <TabsTrigger value="revolution-now">Revolution Now</TabsTrigger>
                 </TabsList>
                 <TabsContent value="youth-unity">
-                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mt-4">
-                    <Users className="h-8 w-8 text-red-400 mb-4" />
-                    <h3 className="font-semibold text-lg mb-2 text-white">Youth Unity</h3>
-                    <p className="text-gray-300">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mt-4 text-center">
+                    <Users className="h-8 w-8 text-red-400 mb-4 mx-auto" />
+                    <h3 className="font-semibold text-lg mb-2 text-white text-center">Youth Unity</h3>
+                    <p className="text-gray-300 text-center">
                       Breaking tribal chains that politicians use to divide us
                     </p>
                   </div>
                 </TabsContent>
                 <TabsContent value="voter-power">
-                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mt-4">
-                    <Shield className="h-8 w-8 text-green-400 mb-4" />
-                    <h3 className="font-semibold text-lg mb-2 text-white">Voter Power</h3>
-                    <p className="text-gray-300">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mt-4 text-center">
+                    <Shield className="h-8 w-8 text-green-400 mb-4 mx-auto" />
+                    <h3 className="font-semibold text-lg mb-2 text-white text-center">Voter Power</h3>
+                    <p className="text-gray-300 text-center">
                       Millions of youth votes can change Kenya's destiny forever
                     </p>
                   </div>
                 </TabsContent>
                 <TabsContent value="resource-justice">
-                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mt-4">
-                    <Target className="h-8 w-8 text-blue-400 mb-4" />
-                    <h3 className="font-semibold text-lg mb-2 text-white">Resource Justice</h3>
-                    <p className="text-gray-300">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mt-4 text-center">
+                    <Target className="h-8 w-8 text-blue-400 mb-4 mx-auto" />
+                    <h3 className="font-semibold text-lg mb-2 text-white text-center">Resource Justice</h3>
+                    <p className="text-gray-300 text-center">
                       Taking back our taxes and resources from political thieves
                     </p>
                   </div>
                 </TabsContent>
                 <TabsContent value="revolution-now">
-                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mt-4">
-                    <Zap className="h-8 w-8 text-yellow-400 mb-4" />
-                    <h3 className="font-semibold text-lg mb-2 text-white">Revolution Now</h3>
-                    <p className="text-gray-300">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mt-4 text-center">
+                    <Zap className="h-8 w-8 text-yellow-400 mb-4 mx-auto" />
+                    <h3 className="font-semibold text-lg mb-2 text-white text-center">Revolution Now</h3>
+                    <p className="text-gray-300 text-center">
                       The time for talk is over. The revolution starts with you.
                     </p>
                   </div>
@@ -340,13 +474,13 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-8 justify-center mb-12">
-            <Link href="/auth/signin">
+            <Link href="/voter-registration">
               <Button size="lg" className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white px-12 py-8 text-2xl font-black border-2 border-red-400 shadow-2xl shadow-red-500/40 hover:shadow-red-500/60 transition-all transform hover:scale-105 w-full sm:w-auto">
                 REGISTER AS VOTER NOW <ArrowRight className="ml-4 h-8 w-8" />
               </Button>
             </Link>
-            <Link href="/analytics" className="hidden sm:flex">
-              <Button size="lg" variant="outline" className="border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-12 py-8 text-2xl font-bold transition-all transform hover:scale-105 w-full sm:w-auto">
+            <Link href="/analytics" className="w-full sm:w-auto sm:flex">
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-black px-12 py-8 text-2xl font-bold transition-all transform hover:scale-105">
                 SEE IMPACT
               </Button>
             </Link>
