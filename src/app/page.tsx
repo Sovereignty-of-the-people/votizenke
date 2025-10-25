@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Users, ArrowRight, BarChart3, Award, Target, TrendingUp, Shield, BookOpen, Zap, Globe, Heart } from "lucide-react";
 import Link from "next/link";
 import { Navigation } from "@/components/navigation";
@@ -151,122 +152,7 @@ export default function Home() {
       {/* Hero Section */}
       <EmotionalHero />
 
-      {/* Futuristic Hero Sections with Kenyan Flag Colors */}
-      {activismSections.map((section, index) => (
-        <section key={index} className="relative h-96 md:h-[600px] overflow-hidden">
-          {/* Background Image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${section.image})` }}
-          >
-            {/* Futuristic Overlay */}
-            <div className={`absolute inset-0 ${section.overlay}`}></div>
-            {/* Digital Grid Effect */}
-            <div className="absolute inset-0 opacity-20">
-              <div className="h-full w-full" style={{
-                backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(255, 0, 0, 0.05) 25%, rgba(255, 0, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, 0.05) 75%, rgba(0, 255, 0, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 0, 0, 0.05) 25%, rgba(255, 0, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, 0.05) 75%, rgba(0, 255, 0, 0.05) 76%, transparent 77%, transparent)`,
-                backgroundSize: '50px 50px'
-              }}></div>
-            </div>
-          </div>
-          
-          {/* Content Overlay with Futuristic Styling */}
-          <div className="relative z-10 h-full flex items-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <div className="max-w-4xl">
-                <Badge className="mb-6 bg-gradient-to-r from-red-600 to-green-600 text-white border-2 border-red-400 px-6 py-3 text-sm font-bold backdrop-blur-sm">
-                  ⚡ {section.subtitle}
-                </Badge>
-                <h2 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tight leading-tight">
-                  {section.title}
-                </h2>
-                <p className="text-xl md:text-2xl text-white/95 mb-10 leading-relaxed max-w-3xl">
-                  {section.description}
-                </p>
-                <Link href={section.ctaLink}>
-                  <Button size="lg" className="bg-gradient-to-r from-red-600 to-green-600 hover:from-red-700 hover:to-green-700 text-white px-10 py-5 text-xl font-bold border-2 border-white/30 shadow-2xl shadow-red-500/30 hover:shadow-red-500/50 transition-all">
-                    {section.cta} <ArrowRight className="ml-3 h-6 w-6" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      ))}
-
-      {/* Impact Stats */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Making Real Impact</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Join thousands of Kenyan youth who are already changing the democratic landscape
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {impactStats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-lg mb-4 ${stat.color}`}>
-                  <stat.icon className="h-8 w-8" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Action Cards Section - Futuristic with Better Contrast */}
-      <section className="py-20 bg-gradient-to-br from-black via-red-950 to-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge className="mb-4 bg-gradient-to-r from-red-600 to-green-600 text-white text-sm px-6 py-3 border border-red-400">
-              ⚡ FUTURE IS NOW
-            </Badge>
-            <h2 className="text-4xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-              TAKE BACK <span className="text-red-500">OUR</span> KENYA
-            </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Political elites have built their empires on our taxes and resources. 
-              It's time we rise up and take back what's rightfully ours. 
-              Your vote is your weapon. Your voice is your power.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {actionCards.map((card, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-red-500/20 transition-all duration-500 transform hover:scale-105 border border-red-900/30">
-                {/* Background Image */}
-                <div 
-                  className="h-72 bg-cover bg-center relative"
-                  style={{ backgroundImage: `url(${card.image})` }}
-                >
-                  {/* Futuristic Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-                  {/* Scanning Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-500/10 to-transparent animate-pulse"></div>
-                </div>
-                
-                {/* Content with High Contrast */}
-                <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/80 to-transparent">
-                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${card.color} mb-4 shadow-lg shadow-red-500/30`}>
-                    <card.icon className="h-7 w-7 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-3 tracking-wide">{card.title}</h3>
-                  <p className="text-gray-200 mb-5 leading-relaxed text-sm">{card.description}</p>
-                  <Link href="/auth/signin">
-                    <Button className="bg-red-600 hover:bg-red-700 text-white border-2 border-red-400 font-bold px-6 py-3 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 transition-all">
-                      ACTIVATE <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Sections are now consolidated into the EmotionalHero component */}
 
       {/* Features Section */}
       <section className="py-20 bg-white">
@@ -331,19 +217,19 @@ export default function Home() {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/auth/signin">
-                  <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-bold">
+                  <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-bold w-full sm:w-auto">
                     Register to Vote Now <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
                 <Link href="/community">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-bold">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-bold w-full sm:w-auto btn-outline-dark-bg">
                     Join the Revolution
                   </Button>
                 </Link>
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-6">
+            <div className="hidden lg:grid grid-cols-2 gap-6">
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
                 <Users className="h-8 w-8 text-red-400 mb-4" />
                 <h3 className="font-semibold text-lg mb-2 text-white">Youth Unity</h3>
@@ -372,6 +258,52 @@ export default function Home() {
                   The time for talk is over. The revolution starts with you.
                 </p>
               </div>
+            </div>
+            <div className="lg:hidden">
+              <Tabs defaultValue="youth-unity" className="w-full">
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="youth-unity">Youth Unity</TabsTrigger>
+                  <TabsTrigger value="voter-power">Voter Power</TabsTrigger>
+                  <TabsTrigger value="resource-justice">Resource Justice</TabsTrigger>
+                  <TabsTrigger value="revolution-now">Revolution Now</TabsTrigger>
+                </TabsList>
+                <TabsContent value="youth-unity">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mt-4">
+                    <Users className="h-8 w-8 text-red-400 mb-4" />
+                    <h3 className="font-semibold text-lg mb-2 text-white">Youth Unity</h3>
+                    <p className="text-gray-300">
+                      Breaking tribal chains that politicians use to divide us
+                    </p>
+                  </div>
+                </TabsContent>
+                <TabsContent value="voter-power">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mt-4">
+                    <Shield className="h-8 w-8 text-green-400 mb-4" />
+                    <h3 className="font-semibold text-lg mb-2 text-white">Voter Power</h3>
+                    <p className="text-gray-300">
+                      Millions of youth votes can change Kenya's destiny forever
+                    </p>
+                  </div>
+                </TabsContent>
+                <TabsContent value="resource-justice">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mt-4">
+                    <Target className="h-8 w-8 text-blue-400 mb-4" />
+                    <h3 className="font-semibold text-lg mb-2 text-white">Resource Justice</h3>
+                    <p className="text-gray-300">
+                      Taking back our taxes and resources from political thieves
+                    </p>
+                  </div>
+                </TabsContent>
+                <TabsContent value="revolution-now">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mt-4">
+                    <Zap className="h-8 w-8 text-yellow-400 mb-4" />
+                    <h3 className="font-semibold text-lg mb-2 text-white">Revolution Now</h3>
+                    <p className="text-gray-300">
+                      The time for talk is over. The revolution starts with you.
+                    </p>
+                  </div>
+                </TabsContent>
+              </Tabs>
             </div>
           </div>
         </div>
@@ -409,17 +341,17 @@ export default function Home() {
           
           <div className="flex flex-col sm:flex-row gap-8 justify-center mb-12">
             <Link href="/auth/signin">
-              <Button size="lg" className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white px-12 py-8 text-2xl font-black border-2 border-red-400 shadow-2xl shadow-red-500/40 hover:shadow-red-500/60 transition-all transform hover:scale-105">
+              <Button size="lg" className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white px-12 py-8 text-2xl font-black border-2 border-red-400 shadow-2xl shadow-red-500/40 hover:shadow-red-500/60 transition-all transform hover:scale-105 w-full sm:w-auto">
                 REGISTER AS VOTER NOW <ArrowRight className="ml-4 h-8 w-8" />
               </Button>
             </Link>
-            <Link href="/analytics">
-              <Button size="lg" variant="outline" className="border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-12 py-8 text-2xl font-bold transition-all transform hover:scale-105">
+            <Link href="/analytics" className="hidden sm:flex">
+              <Button size="lg" variant="outline" className="border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-12 py-8 text-2xl font-bold transition-all transform hover:scale-105 w-full sm:w-auto">
                 SEE IMPACT
               </Button>
             </Link>
-            <Link href="/community">
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-black px-12 py-8 text-2xl font-bold transition-all transform hover:scale-105">
+            <Link href="/community" className="hidden sm:flex">
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-black px-12 py-8 text-2xl font-bold transition-all transform hover:scale-105 w-full sm:w-auto btn-outline-dark-bg">
                 JOIN MOVEMENT
               </Button>
             </Link>

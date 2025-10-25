@@ -34,8 +34,8 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-orbitron);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -53,5 +53,17 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+.btn-outline-dark-bg {
+  @apply border-gray-400 text-gray-300 hover:bg-white hover:text-black;
+}
+
+.btn-outline-dark-bg.text-green-400 {
+    @apply border-green-500 text-green-500 hover:bg-green-500 hover:text-white;
 }

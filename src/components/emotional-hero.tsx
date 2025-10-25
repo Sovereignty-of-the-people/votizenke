@@ -13,39 +13,55 @@ export function EmotionalHero() {
   const slides = [
     {
       id: 1,
-      title: "Your Voice Matters",
-      subtitle: "Join thousands of Kenyan youth demanding change",
-      image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=1200&h=600&fit=crop",
-      cta: "Start Your Journey",
+      title: "OUR TAXES, THEIR EMPIRES",
+      subtitle: "Stop Funding Political Elites",
+      description: "Every shilling in their pockets comes from our taxes. It's time we take back control of our resources and our future.",
+      image: "https://images.unsplash.com/photo-1559028012-c746a5aee2db?w=1200&h=600&fit=crop&crop=entropy&auto=format",
+      cta: "Register to Vote",
+      ctaLink: "/auth/signin",
       stats: "50,000+ Youth Mobilized"
     },
     {
       id: 2,
-      title: "Democracy is Action",
-      subtitle: "From protests to policies - be the change",
-      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&h=600&fit=crop",
-      cta: "Get Involved",
+      title: "GEN Z RISING",
+      subtitle: "The Revolution Has Begun",
+      description: "From the streets of Nairobi to Mombasa, Kenyan youth are waking up. We saw it in the demos - our power when united.",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop&crop=entropy&auto=format",
+      cta: "Join Movement",
+      ctaLink: "/community",
       stats: "23 Cities Active"
     },
     {
       id: 3,
-      title: "Register. Vote. Lead.",
-      subtitle: "The future of Kenya is in your hands",
-      image: "https://images.unsplash.com/photo-1581833971358-2c8b55038a29?w=1200&h=600&fit=crop",
-      cta: "Register to Vote",
+      title: "YOUR VOTE IS YOUR VOICE",
+      subtitle: "Make It Count",
+      description: "They want us to remain silent while they loot our country. Your voter card is your weapon against corruption.",
+      image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1200&h=600&fit=crop&crop=entropy&auto=format",
+      cta: "Register Now",
+      ctaLink: "/auth/signin",
       stats: "12,000+ New Voters"
+    },
+    {
+      id: 4,
+      title: "STOP BEING USED",
+      subtitle: "Break the chains.",
+      description: "Political elites use our taxes to build their empires while we struggle. ",
+      image: "https://images.unsplash.com/photo-1559028012-c746a5aee2db?w=400&h=300&fit=crop&crop=entropy&auto=format",
+      cta: "ACTIVATE",
+      ctaLink: "/auth/signin",
+      stats: "1,200+ Civic Actions"
     }
   ]
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000)
+    }, 7000) // Increased interval for better readability
     return () => clearInterval(interval)
   }, [slides.length])
 
   return (
-    <section className="relative h-[600px] overflow-hidden">
+    <section className="relative h-[700px] md:h-[800px] overflow-hidden bg-black">
       {/* Background Slideshow */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
@@ -59,7 +75,14 @@ export function EmotionalHero() {
               className="w-full h-full bg-cover bg-center"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
+               {/* Digital Grid Effect */}
+              <div className="absolute inset-0 opacity-20">
+                <div className="h-full w-full" style={{
+                  backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(255, 0, 0, 0.05) 25%, rgba(255, 0, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, 0.05) 75%, rgba(0, 255, 0, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 0, 0, 0.05) 25%, rgba(255, 0, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, 0.05) 75%, rgba(0, 255, 0, 0.05) 76%, transparent 77%, transparent)`,
+                  backgroundSize: '50px 50px'
+                }}></div>
+              </div>
             </div>
           </div>
         ))}
@@ -67,28 +90,29 @@ export function EmotionalHero() {
 
       {/* Content Overlay */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
+            key={currentSlide}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-white"
+            className="text-white max-w-4xl"
           >
-            <Badge className="mb-6 bg-red-600 text-white text-lg px-6 py-3">
-              🇰🇪 Movement for Change
+            <Badge className="mb-6 bg-gradient-to-r from-red-600 to-green-600 text-white border-2 border-red-400 px-6 py-3 text-sm font-bold backdrop-blur-sm">
+              ⚡ {slides[currentSlide].subtitle}
             </Badge>
             
-            <h1 className="text-4xl md:text-7xl font-bold mb-8 leading-tight text-red-500">
+            <h1 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tight leading-tight">
               {slides[currentSlide].title}
             </h1>
             
-            <p className="text-xl md:text-3xl mb-12 text-red-400 max-w-3xl mx-auto">
-              {slides[currentSlide].subtitle}
+            <p className="text-xl md:text-2xl text-white/95 mb-10 leading-relaxed max-w-3xl">
+              {slides[currentSlide].description}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-              <Link href="/auth/signin">
-                <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-10 py-6 text-xl font-bold">
+            <div className="flex flex-col sm:flex-row gap-6 mb-12">
+              <Link href={slides[currentSlide].ctaLink}>
+                <Button size="lg" className="bg-gradient-to-r from-red-600 to-green-600 hover:from-red-700 hover:to-green-700 text-white px-10 py-5 text-xl font-bold border-2 border-white/30 shadow-2xl shadow-red-500/30 hover:shadow-red-500/50 transition-all">
                   {slides[currentSlide].cta}
                   <ArrowRight className="ml-3 h-6 w-6" />
                 </Button>
@@ -98,16 +122,15 @@ export function EmotionalHero() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white px-10 py-6 text-xl font-bold"
+                  className="border-white text-white hover:bg-white hover:text-black px-10 py-5 text-xl font-bold transition-all"
                 >
-                  <ArrowRight className="mr-3 h-6 w-6" />
                   See Impact
                 </Button>
               </Link>
             </div>
 
             {/* Live Stats */}
-            <div className="flex items-center justify-center gap-8">
+            <div className="flex items-center gap-8">
               <div className="flex items-center gap-3">
                 <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="text-2xl font-bold text-white">{slides[currentSlide].stats}</span>
@@ -126,7 +149,7 @@ export function EmotionalHero() {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === currentSlide 
                 ? "bg-white w-8" 
                 : "bg-white/50 hover:bg-white/75"
