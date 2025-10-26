@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Orbitron, Inter } from "next/font/google";
 import "./globals.css";
-import { SessionProvider } from "@/components/providers/session-provider";
+import AuthProvider from "@/components/providers/session-provider";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -29,9 +29,9 @@ export default function RootLayout({
       <body
         className={`${orbitron.variable} ${inter.variable} antialiased`}
       >
-        <SessionProvider>
+        <AuthProvider>
           {children}
-        </SessionProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -214,9 +214,9 @@ export default function Analytics() {
                     {stat.change}
                   </div>
                 </div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
-                <h3 className="text-sm font-medium text-gray-600 mb-1">{stat.title}</h3>
-                <p className="text-xs text-gray-500">{stat.description}</p>
+                <div className="text-2xl font-bold text-gray-800 mb-1">{stat.value}</div>
+                <h3 className="text-sm font-medium text-gray-700 mb-1">{stat.title}</h3>
+                <p className="text-xs text-gray-600">{stat.description}</p>
               </CardContent>
             </Card>
           ))}

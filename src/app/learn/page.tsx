@@ -245,8 +245,8 @@ export default function LearnPage() {
                       <Lock className="h-6 w-6 text-gray-400" />
                     )}
                   </div>
-                  <CardTitle className="text-lg">{lesson.title}</CardTitle>
-                  <CardDescription>{lesson.description}</CardDescription>
+                  <CardTitle className="text-lg text-gray-800">{lesson.title}</CardTitle>
+                  <CardDescription className="text-gray-600">{lesson.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {/* Progress Bar */}
@@ -268,7 +268,7 @@ export default function LearnPage() {
                   )}
 
                   {/* Lesson Metadata */}
-                  <div className="flex items-center justify-between text-sm text-gray-600">
+                  <div className="flex items-center justify-between text-sm text-gray-700">
                     <div className="flex items-center gap-1">
                       <Clock className="h-4 w-4" />
                       {lesson.duration}

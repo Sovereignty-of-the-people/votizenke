@@ -155,6 +155,133 @@ export default function Home() {
 
       {/* Sections are now consolidated into the EmotionalHero component */}
 
+      {/* Horizontal Action Cards - Futuristic Sci-Fi Design */}
+      <section className="py-16 bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
+        {/* Futuristic Background Effects */}
+        <div className="absolute inset-0">
+          {/* Digital Grid Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="h-full w-full" style={{
+              backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 255, 0.05) 75%, rgba(255, 0, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 255, 0.05) 75%, rgba(255, 0, 255, 0.05) 76%, transparent 77%, transparent)`,
+              backgroundSize: '40px 40px'
+            }}></div>
+          </div>
+          {/* Animated Data Streams */}
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-cyan-500/20 to-transparent animate-pulse"></div>
+            <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-magenta-500/20 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
+          </div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Badge className="mb-6 bg-gradient-to-r from-cyan-600 to-magenta-600 text-white border-2 border-cyan-400 text-lg px-6 py-3 font-bold shadow-lg shadow-cyan-500/30">
+              ⚡ ACTIVATION PROTOCOLS
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+              Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-magenta-400">Revolution Path</span>
+            </h2>
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Select your mission. Each path is designed to maximize your impact in the fight for Kenya's future.
+            </p>
+          </div>
+
+          {/* Horizontal Scrolling Container */}
+          <div className="relative">
+            {/* Scroll Indicators */}
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden lg:block">
+              <div className="bg-gradient-to-r from-gray-900 to-transparent w-8 h-full"></div>
+            </div>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden lg:block">
+              <div className="bg-gradient-to-l from-gray-900 to-transparent w-8 h-full"></div>
+            </div>
+            
+            <div className="overflow-x-auto scrollbar-hide pb-6">
+              <div className="flex gap-6 min-w-max px-4 lg:px-0">
+                {actionCards.map((card, index) => (
+                  <div key={index} className="group relative w-80 flex-shrink-0">
+                    {/* Futuristic Card Design */}
+                    <div className="relative h-96 bg-gradient-to-br from-gray-800/90 via-black/90 to-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700 hover:border-cyan-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20 hover:transform hover:scale-105 overflow-hidden">
+                      {/* Corner Tech Brackets */}
+                      <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-cyan-500 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                      <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-magenta-500 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                      <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-magenta-500 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                      <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-cyan-500 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                      
+                      {/* Animated Background Pattern */}
+                      <div className="absolute inset-0 opacity-20">
+                        <div className="h-full w-full" style={{
+                          backgroundImage: `linear-gradient(45deg, transparent 48%, rgba(0, 255, 255, 0.1) 49%, rgba(0, 255, 255, 0.1) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 0, 255, 0.1) 49%, rgba(255, 0, 255, 0.1) 51%, transparent 52%)`,
+                          backgroundSize: '20px 20px'
+                        }}></div>
+                      </div>
+                      
+                      {/* Icon Container with Glow */}
+                      <div className="flex justify-center pt-8 pb-6">
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-magenta-500 rounded-xl blur-lg opacity-30 group-hover:opacity-60 transition-opacity"></div>
+                          <div className="relative p-4 rounded-xl bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30">
+                            <card.icon className="h-10 w-10 text-cyan-400" />
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Content */}
+                      <div className="text-center px-6">
+                        <h3 className="text-xl font-black text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-magenta-400 transition-all duration-300">
+                          {card.title}
+                        </h3>
+                        <p className="text-gray-300 mb-6 leading-relaxed text-sm">
+                          {card.description}
+                        </p>
+                        
+                        {/* Futuristic Button */}
+                        {card.link ? (
+                          <Link href={card.link}>
+                            <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-600/20 to-magenta-600/20 border border-cyan-500/30 rounded-full hover:border-cyan-400 hover:from-cyan-600/30 hover:to-magenta-600/30 transition-all duration-300 group">
+                              <span className="text-cyan-400 font-bold text-sm">EXECUTE</span>
+                              <ArrowRight className="h-4 w-4 text-cyan-400 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                          </Link>
+                        ) : (
+                          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600/20 to-orange-600/20 border border-red-500/30 rounded-full">
+                            <span className="text-red-400 font-bold text-sm">ACTIVATED</span>
+                          </div>
+                        )}
+                      </div>
+                      
+                      {/* Scanning Line Effect */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      {/* Data Points Animation */}
+                      <div className="absolute top-4 right-4 flex gap-1">
+                        <div className="w-1 h-1 bg-cyan-400 rounded-full animate-pulse"></div>
+                        <div className="w-1 h-1 bg-magenta-400 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                        <div className="w-1 h-1 bg-cyan-400 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          {/* Bottom Status Indicator */}
+          <div className="text-center mt-12">
+            <div className="inline-flex items-center gap-6 bg-gradient-to-r from-cyan-900/30 to-magenta-900/30 backdrop-blur-sm px-8 py-4 rounded-full border border-cyan-500/20">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
+                <span className="text-cyan-400 font-bold text-sm">PROTOCOLS ACTIVE</span>
+              </div>
+              <span className="text-gray-500">•</span>
+              <span className="text-white font-medium text-sm">6 MISSION PATHS READY</span>
+              <span className="text-gray-500">•</span>
+              <span className="text-magenta-400 font-bold text-sm">REVOLUTION MODE</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section - Futuristic Design */}
       <section className="py-24 bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
         {/* Futuristic Background Effects */}

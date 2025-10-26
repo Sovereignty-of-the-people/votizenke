@@ -187,9 +187,9 @@ export default function Dashboard() {
                   <div className={`p-3 rounded-full ${stat.bgColor}`}>
                     <stat.icon className={`h-6 w-6 ${stat.color}`} />
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">{stat.value}</span>
+                  <span className="text-2xl font-bold text-gray-800">{stat.value}</span>
                 </div>
-                <h3 className="text-sm font-medium text-gray-600">{stat.title}</h3>
+                <h3 className="text-sm font-medium text-gray-700">{stat.title}</h3>
               </CardContent>
             </Card>
           ))}

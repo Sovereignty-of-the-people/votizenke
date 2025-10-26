@@ -7,8 +7,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { Chrome } from "lucide-react"
-import { useSession } from "@/components/providers/session-provider"
-import Link from "next/link"
+import { signIn } from "next-auth/react";
+
+// ... (imports)
 
 export function SignInForm() {
   const [email, setEmail] = useState("")
@@ -16,35 +17,59 @@ export function SignInForm() {
   const [isLoading, setIsLoading] = useState(false)
   const [isSignUp, setIsSignUp] = useState(false)
   const [name, setName] = useState("")
-  
-  const { signIn, signUp } = useSession()
 
-  const handleEmailSignIn = async (e: React.FormEvent) => {
+  const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    
-    try {
-      if (isSignUp) {
-        await signUp(email, password, name)
-      } else {
-        await signIn(email, password)
+
+    if (isSignUp) {
+      // Handle Sign Up
+      try {
+        const res = await fetch('/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password, name }),
+        });
+
+        if (res.ok) {
+          // Automatically sign in after successful registration
+          const signInRes = await signIn('credentials', {
+            redirect: false,
+            email,
+            password,
+          });
+
+          if (signInRes?.ok) {
+            window.location.href = "/dashboard";
+          } else {
+            // Handle sign-in error after registration
+            console.error('Sign-in after registration failed');
+            setIsLoading(false);
+          }
+        } else {
+          // Handle registration error
+          console.error('Registration failed');
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.error('Registration request failed', error);
+        setIsLoading(false);
       }
-      
-      // Wait a bit longer to ensure localStorage is updated and state is synchronized
-      await new Promise(resolve => setTimeout(resolve, 500))
-      
-      // Verify user is actually stored before redirecting
-      const storedUser = localStorage.getItem('votizenke_user')
-      if (storedUser) {
-        console.log('User successfully stored, redirecting to dashboard')
-        window.location.href = "/dashboard"
+    } else {
+      // Handle Sign In
+      const res = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (res?.ok) {
+        window.location.href = "/dashboard";
       } else {
-        console.error('User not found in localStorage after sign in')
-        setIsLoading(false)
+        // Handle error
+        console.error('Sign in failed');
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error("Auth error:", error)
-      setIsLoading(false)
     }
   }
 
@@ -59,7 +84,7 @@ export function SignInForm() {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <form onSubmit={handleEmailSignIn} className="space-y-4">
+        <form onSubmit={handleAuth} className="space-y-4">
           {isSignUp && (
             <div className="space-y-2">
               <Label htmlFor="name">Full Name</Label>
@@ -106,7 +131,7 @@ export function SignInForm() {
 
         <div className="text-center text-sm">
           <span className="text-muted-foreground">
-            {isSignUp ? "Already have an account? " : "Don't have an account? "}
+            {isSignUp ? "Already have an account? " : "Don\'t have an account? "}
           </span>
           <Button 
             variant="link" 
