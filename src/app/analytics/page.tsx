@@ -140,7 +140,7 @@ export default function Analytics() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
       <Navigation />
       
-      <div className="p-6 max-w-7xl mx-auto">
+      <div className="pt-8 p-6 max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -162,7 +162,7 @@ export default function Analytics() {
               <h1 className="text-5xl md:text-7xl font-black text-white mb-4">
                 Impact <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-red-400">Analytics</span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+              <p className="text-xl md:text-2xl text-white leading-relaxed">
                 Track your revolutionary influence and contribution to Kenyan democracy
               </p>
             </div>
@@ -184,7 +184,7 @@ export default function Analytics() {
               <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
               <span className="text-green-400 font-bold">LIVE DATA</span>
             </div>
-            <span className="text-gray-400">•</span>
+            <span className="text-white">•</span>
             <span className="text-white font-medium">REAL-TIME ANALYTICS</span>
           </div>
         </motion.div>
@@ -197,14 +197,14 @@ export default function Analytics() {
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
         >
           {stats.map((stat, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow">
+            <Card key={index} className="bg-white/10 backdrop-blur-xl border-white/20 hover:bg-white/15 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-white/10">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <div className={`p-3 rounded-full ${stat.bgColor}`}>
+                  <div className={`p-3 rounded-full ${stat.bgColor} shadow-lg`}>
                     <stat.icon className={`h-6 w-6 ${stat.color}`} />
                   </div>
-                  <div className={`flex items-center text-sm font-medium ${
-                    stat.trend === 'up' ? 'text-green-600' : 'text-red-600'
+                  <div className={`flex items-center text-sm font-bold px-2 py-1 rounded-full ${
+                    stat.trend === 'up' ? 'bg-emerald-900/40 text-emerald-400' : 'bg-red-900/40 text-red-400'
                   }`}>
                     {stat.trend === 'up' ? (
                       <ArrowUp className="h-4 w-4 mr-1" />
@@ -214,9 +214,9 @@ export default function Analytics() {
                     {stat.change}
                   </div>
                 </div>
-                <div className="text-2xl font-bold text-gray-800 mb-1">{stat.value}</div>
-                <h3 className="text-sm font-medium text-gray-700 mb-1">{stat.title}</h3>
-                <p className="text-xs text-gray-600">{stat.description}</p>
+                <div className="text-3xl font-bold text-white mb-2 drop-shadow">{stat.value}</div>
+                <h3 className="text-sm font-bold text-gray-100 mb-2">{stat.title}</h3>
+                <p className="text-xs text-gray-200">{stat.description}</p>
               </CardContent>
             </Card>
           ))}
@@ -229,36 +229,38 @@ export default function Analytics() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-blue-600" />
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20 shadow-xl hover:shadow-2xl hover:shadow-white/10 transition-all duration-300">
+              <CardHeader className="bg-white/5 rounded-t-xl">
+                <CardTitle className="flex items-center gap-3 text-white">
+                  <div className="p-2 bg-blue-600 rounded-lg shadow-lg">
+                    <MapPin className="h-5 w-5 text-white" />
+                  </div>
                   Top Performing Counties
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-gray-100 text-base">
                   Voter registration progress by county
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-6">
                 <div className="space-y-4">
                   {countyPerformance.map((county, index) => (
-                    <div key={index} className="space-y-2">
+                    <div key={index} className="space-y-3 p-3 bg-white/5 rounded-lg">
                       <div className="flex justify-between items-center">
                         <div className="flex items-center gap-3">
-                          <span className="text-sm font-medium text-gray-900 w-24">
+                          <span className="text-sm font-bold text-white w-24">
                             {county.name}
                           </span>
-                          <Badge variant="secondary" className="text-xs">
+                          <Badge className="text-xs bg-emerald-600/30 text-emerald-300 border-emerald-400/30">
                             {county.growth}
                           </Badge>
                         </div>
-                        <span className="text-sm text-gray-600">
+                        <span className="text-sm text-gray-100 font-medium">
                           {county.registered.toLocaleString()} / {county.target.toLocaleString()}
                         </span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-white/20 rounded-full h-3">
                         <div 
-                          className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-300"
+                          className="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full transition-all duration-300 shadow-lg shadow-blue-500/40"
                           style={{ width: `${county.percentage}%` }}
                         ></div>
                       </div>
@@ -275,36 +277,38 @@ export default function Analytics() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <PieChart className="h-5 w-5 text-purple-600" />
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20 shadow-xl hover:shadow-2xl hover:shadow-white/10 transition-all duration-300">
+              <CardHeader className="bg-white/5 rounded-t-xl">
+                <CardTitle className="flex items-center gap-3 text-white">
+                  <div className="p-2 bg-purple-600 rounded-lg shadow-lg">
+                    <PieChart className="h-5 w-5 text-white" />
+                  </div>
                   Age Demographics
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-gray-100 text-base">
                   Youth voter registration by age group
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-6">
                 <div className="space-y-4">
                   {ageDemographics.map((age, index) => (
-                    <div key={index} className="space-y-2">
+                    <div key={index} className="space-y-3 p-3 bg-white/5 rounded-lg">
                       <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium text-gray-900">
+                        <span className="text-sm font-bold text-white">
                           {age.group} Years
                         </span>
                         <div className="flex items-center gap-2">
-                          <span className="text-sm text-gray-600">
+                          <span className="text-sm text-gray-100 font-medium">
                             {age.count.toLocaleString()} voters
                           </span>
-                          <Badge variant="outline" className="text-xs">
+                          <Badge className="text-xs bg-purple-600/30 text-purple-300 border-purple-400/30">
                             {age.percentage}%
                           </Badge>
                         </div>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-3">
+                      <div className="w-full bg-white/20 rounded-full h-3">
                         <div 
-                          className={`${age.color} h-3 rounded-full transition-all duration-300`}
+                          className={`${age.color} h-3 rounded-full transition-all duration-300 shadow-lg`}
                           style={{ width: `${age.percentage}%` }}
                         ></div>
                       </div>
@@ -322,44 +326,46 @@ export default function Analytics() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <BarChart3 className="h-5 w-5 text-green-600" />
+          <Card className="bg-white/10 backdrop-blur-xl border-white/20 shadow-xl hover:shadow-2xl hover:shadow-white/10 transition-all duration-300">
+            <CardHeader className="bg-white/5 rounded-t-xl">
+              <CardTitle className="flex items-center gap-3 text-white">
+                <div className="p-2 bg-emerald-600 rounded-lg shadow-lg">
+                  <BarChart3 className="h-5 w-5 text-white" />
+                </div>
                 Monthly Registration Trend
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-gray-100 text-base">
                 Voter registration growth over time
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6">
               <div className="space-y-4">
                 {monthlyTrend.map((month, index) => (
-                  <div key={index} className="space-y-2">
+                  <div key={index} className="space-y-3 p-3 bg-white/5 rounded-lg">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-gray-900 w-12">
+                      <span className="text-sm font-bold text-white w-12">
                         {month.month}
                       </span>
                       <div className="flex items-center gap-4">
-                        <span className="text-sm text-gray-600">
+                        <span className="text-sm text-gray-100 font-medium">
                           Target: {month.target.toLocaleString()}
                         </span>
-                        <span className="text-sm font-medium text-green-600">
+                        <span className="text-sm font-bold text-emerald-300">
                           {month.registrations.toLocaleString()}
                         </span>
                         <Badge className={
                           month.registrations >= month.target 
-                            ? "bg-green-100 text-green-800" 
-                            : "bg-yellow-100 text-yellow-800"
+                            ? "bg-emerald-600/30 text-emerald-300 border-emerald-400/30" 
+                            : "bg-yellow-600/30 text-yellow-300 border-yellow-400/30"
                         }>
                           {Math.round((month.registrations / month.target) * 100)}%
                         </Badge>
                       </div>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="w-full bg-gray-300 rounded-full h-2">
+                    <div className="w-full bg-white/20 rounded-full h-3">
+                      <div className="w-full bg-white/10 rounded-full h-3">
                         <div 
-                          className="bg-gradient-to-r from-green-500 to-green-600 h-2 rounded-full transition-all duration-300"
+                          className="bg-gradient-to-r from-emerald-500 to-emerald-600 h-3 rounded-full transition-all duration-300 shadow-lg shadow-emerald-500/40"
                           style={{ width: `${Math.min((month.registrations / month.target) * 100, 100)}%` }}
                         ></div>
                       </div>
@@ -378,33 +384,33 @@ export default function Analytics() {
           transition={{ delay: 0.7 }}
           className="mt-8"
         >
-          <Card className="bg-gradient-to-r from-green-600 to-blue-600 text-white">
-            <CardContent className="p-8">
+          <Card className="bg-gradient-to-br from-emerald-600 via-green-600 to-teal-600 shadow-2xl border-0 overflow-hidden">
+            <CardContent className="p-10">
               <div className="text-center">
-                <h2 className="text-3xl font-bold mb-4">
+                <h2 className="text-4xl font-bold mb-6 text-white drop-shadow-lg">
                   The People's Revolution is Working
                 </h2>
-                <p className="text-xl text-green-100 mb-6 max-w-3xl mx-auto">
+                <p className="text-xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
                   We are no longer letting partisan media and political elites drive the narrative. 
                   Through VotizenKE, Kenyan youth are taking control of their democratic destiny. 
                   Every registration is a step toward corrupt-free leadership and accountable governance.
                 </p>
-                <div className="grid md:grid-cols-3 gap-6 mb-8">
-                  <div className="text-center">
-                    <div className="text-4xl font-bold mb-2">47,892</div>
-                    <div className="text-green-100">New Youth Voters</div>
+                <div className="grid md:grid-cols-3 gap-8 mb-10">
+                  <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
+                    <div className="text-5xl font-bold mb-3 text-white drop-shadow">47,892</div>
+                    <div className="text-white/90 font-medium">New Youth Voters</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-bold mb-2">42/47</div>
-                    <div className="text-green-100">Counties Active</div>
+                  <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
+                    <div className="text-5xl font-bold mb-3 text-white drop-shadow">42/47</div>
+                    <div className="text-white/90 font-medium">Counties Active</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-bold mb-2">68%</div>
-                    <div className="text-green-100">Youth Participation</div>
+                  <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
+                    <div className="text-5xl font-bold mb-3 text-white drop-shadow">68%</div>
+                    <div className="text-white/90 font-medium">Youth Participation</div>
                   </div>
                 </div>
                 <Link href="/auth/signin">
-                  <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100 px-8 py-4 text-lg font-bold">
+                  <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100 px-10 py-4 text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                     Be Part of This Revolution
                   </Button>
                 </Link>

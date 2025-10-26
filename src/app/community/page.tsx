@@ -13,7 +13,8 @@ import { motion } from "framer-motion"
 import { MessageSquare, BarChart3, Users, TrendingUp, Calendar, Bell } from "lucide-react"
 
 export default function CommunityPage() {
-  const { user } = useSession()
+  const { data: session } = useSession()
+  const user = session?.user
   const [showVoterPopup, setShowVoterPopup] = useState(false)
 
   // Show voter registration popup after 5 seconds
@@ -58,7 +59,7 @@ export default function CommunityPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
       <Navigation />
       
-      <div className="p-6 max-w-7xl mx-auto">
+      <div className="pt-8 p-6 max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,7 +79,7 @@ export default function CommunityPage() {
           <h1 className="text-5xl md:text-7xl font-black text-white mb-4">
             Welcome to Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-red-400">Community</span> 🇰🇪
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+          <p className="text-xl md:text-2xl text-white leading-relaxed">
             Connect with thousands of revolutionary Kenyan youth making a difference and taking back our country
           </p>
           
@@ -88,7 +89,7 @@ export default function CommunityPage() {
               <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
               <span className="text-green-400 font-bold">COMMUNITY ACTIVE</span>
             </div>
-            <span className="text-gray-400">•</span>
+            <span className="text-white">•</span>
             <span className="text-white font-medium">12,453 YOUTH ONLINE</span>
           </div>
         </motion.div>
@@ -107,7 +108,7 @@ export default function CommunityPage() {
                   <stat.icon className={`h-8 w-8 ${stat.color.replace('text-', 'text-').replace('600', '400')}`} />
                   <span className="text-3xl font-black text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-green-400 group-hover:to-red-400 transition-all duration-300">{stat.value}</span>
                 </div>
-                <h3 className="text-sm font-bold text-gray-300 uppercase tracking-wider">{stat.label}</h3>
+                <h3 className="text-sm font-bold text-white uppercase tracking-wider">{stat.label}</h3>
                 
                 {/* Corner Tech Brackets */}
                 <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-green-500 opacity-60 group-hover:opacity-100 transition-opacity"></div>
@@ -139,20 +140,92 @@ export default function CommunityPage() {
           </TabsList>
 
           <TabsContent value="chat" className="space-y-8">
-            <div className="bg-gradient-to-br from-gray-800/80 to-black/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-green-600/20 to-green-800/20 border border-green-500/30">
-                  <MessageSquare className="h-8 w-8 text-green-400" />
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="relative"
+            >
+              <div className="bg-gradient-to-br from-gray-800/80 to-black/80 backdrop-blur-xl p-10 rounded-2xl border border-gray-700 relative overflow-hidden">
+                {/* Animated Background Effects */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-blue-600"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/20 rounded-full -mr-16 -mt-16 animate-pulse"></div>
+                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/20 rounded-full -ml-12 -mb-12 animate-pulse delay-1000"></div>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-black text-white">Community Chat Rooms</h3>
-                  <p className="text-gray-400">Join real-time discussions with revolutionary Kenyan youth</p>
+
+                <div className="relative z-10">
+                  <motion.div 
+                    className="flex items-center gap-4 mb-16"
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <motion.div 
+                      className="p-3 rounded-xl bg-gradient-to-br from-green-600/20 to-green-800/20 border border-green-500/30 flex-shrink-0"
+                      whileHover={{ 
+                        scale: 1.05, 
+                        rotate: [0, 5, -5, 0],
+                        transition: { duration: 0.5 }
+                      }}
+                    >
+                      <MessageSquare className="h-8 w-8 text-green-400" />
+                    </motion.div>
+                    <div className="flex-1 pr-2">
+                      <h3 className="text-2xl font-black text-white leading-tight mb-1">Community Chat Rooms</h3>
+                      <p className="text-white leading-relaxed">Join real-time discussions with revolutionary Kenyan youth</p>
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    className="bg-black/50 rounded-xl p-6 border border-gray-700 relative overflow-hidden group"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    whileHover={{ 
+                      scale: 1.01,
+                      borderColor: "rgba(34, 197, 94, 0.5)",
+                      boxShadow: "0 20px 40px rgba(34, 197, 94, 0.2)"
+                    }}
+                  >
+                    {/* Chat Room Status Indicators */}
+                    <div className="absolute top-4 right-4 flex gap-2">
+                      <motion.div 
+                        className="flex items-center gap-1 bg-green-500/20 px-2 py-1 rounded-full border border-green-500/30"
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-xs text-green-400 font-medium">LIVE</span>
+                      </motion.div>
+                      <motion.div 
+                        className="flex items-center gap-1 bg-blue-500/20 px-2 py-1 rounded-full border border-blue-500/30"
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                      >
+                        <Users className="h-3 w-3 text-blue-400" />
+                        <span className="text-xs text-blue-400 font-medium">247</span>
+                      </motion.div>
+                    </div>
+
+                    {/* Animated Chat Background */}
+                    <div className="absolute inset-0 opacity-5">
+                      <div className="h-full w-full" style={{
+                        backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(34, 197, 94, 0.05) 25%, rgba(34, 197, 94, 0.05) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.05) 75%, rgba(59, 130, 246, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(34, 197, 94, 0.05) 25%, rgba(34, 197, 94, 0.05) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.05) 75%, rgba(59, 130, 246, 0.05) 76%, transparent 77%, transparent)`,
+                        backgroundSize: '40px 40px'
+                      }}></div>
+                    </div>
+
+                    <div className="relative z-10">
+                      <CommunityChat />
+                    </div>
+
+                    {/* Hover Effect Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  </motion.div>
                 </div>
               </div>
-              <div className="bg-black/50 rounded-xl p-6 border border-gray-700">
-                <CommunityChat />
-              </div>
-            </div>
+            </motion.div>
           </TabsContent>
 
           <TabsContent value="polls" className="space-y-6">

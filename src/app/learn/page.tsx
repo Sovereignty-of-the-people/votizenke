@@ -119,7 +119,7 @@ export default function LearnPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
       <Navigation />
       
-      <div className="p-6 max-w-7xl mx-auto">
+      <div className="pt-8 p-6 max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -147,7 +147,7 @@ export default function LearnPage() {
               Civic <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Education</span>
             </h1>
           </div>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl leading-relaxed">
+          <p className="text-xl md:text-2xl text-white max-w-4xl leading-relaxed">
             Master your revolutionary rights, responsibilities, and the power of your vote through comprehensive lessons designed for Kenyan youth
           </p>
           
@@ -157,7 +157,7 @@ export default function LearnPage() {
               <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
               <span className="text-blue-400 font-bold">EDUCATION ACTIVE</span>
             </div>
-            <span className="text-gray-400">•</span>
+            <span className="text-white">•</span>
             <span className="text-white font-medium">12 LESSONS AVAILABLE</span>
           </div>
         </motion.div>
@@ -225,94 +225,165 @@ export default function LearnPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + index * 0.1 }}
+              whileHover={{ 
+                y: -5,
+                scale: 1.02,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.3)"
+              }}
+              className="group"
             >
-              <Card className={`h-full hover:shadow-lg transition-all duration-300 ${
-                lesson.completed ? 'border-green-200 bg-green-50' : 
-                lesson.locked ? 'border-gray-200 opacity-75' : 'border-gray-200'
+              <Card className={`h-full transition-all duration-500 relative overflow-hidden ${
+                lesson.completed ? 'bg-gradient-to-br from-green-50 to-emerald-100 border-green-300' : 
+                lesson.locked ? 'bg-gradient-to-br from-gray-100 to-gray-200 border-gray-300 opacity-75' : 
+                'bg-gradient-to-br from-blue-50 to-indigo-100 border-blue-300'
               }`}>
-                <CardHeader>
+                {/* Animated Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className={`absolute inset-0 ${
+                    lesson.completed ? 'bg-gradient-to-br from-green-400 to-emerald-600' :
+                    lesson.locked ? 'bg-gradient-to-br from-gray-400 to-gray-600' :
+                    'bg-gradient-to-br from-blue-400 to-indigo-600'
+                  }`}></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12 group-hover:scale-125 transition-transform duration-700"></div>
+                </div>
+
+                <CardHeader className="relative z-10">
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`p-3 rounded-full ${
-                      lesson.completed ? 'bg-green-100' : 
-                      lesson.locked ? 'bg-gray-100' : 'bg-blue-100'
-                    }`}>
-                      {lesson.icon}
+                    <motion.div 
+                      className={`p-3 rounded-full ${
+                        lesson.completed ? 'bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg shadow-green-500/30' : 
+                        lesson.locked ? 'bg-gradient-to-br from-gray-400 to-gray-600 shadow-lg shadow-gray-400/30' : 
+                        'bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/30'
+                      }`}
+                      whileHover={{ 
+                        scale: 1.1, 
+                        rotate: lesson.completed ? 360 : 0,
+                        transition: { duration: 0.6 }
+                      }}
+                    >
+                      <div className="text-white">
+                        {lesson.icon}
+                      </div>
+                    </motion.div>
+                    <div className="flex items-center gap-2">
+                      {lesson.completed && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ type: "spring", stiffness: 200 }}
+                        >
+                          <CheckCircle className="h-6 w-6 text-green-600" />
+                        </motion.div>
+                      )}
+                      {lesson.locked && (
+                        <Lock className="h-6 w-6 text-gray-500" />
+                      )}
                     </div>
-                    {lesson.completed && (
-                      <CheckCircle className="h-6 w-6 text-green-600" />
-                    )}
-                    {lesson.locked && (
-                      <Lock className="h-6 w-6 text-gray-400" />
-                    )}
                   </div>
-                  <CardTitle className="text-lg text-gray-800">{lesson.title}</CardTitle>
-                  <CardDescription className="text-gray-600">{lesson.description}</CardDescription>
+                  <CardTitle className={`text-lg font-bold ${
+                    lesson.completed ? 'text-green-800' : 
+                    lesson.locked ? 'text-gray-700' : 
+                    'text-blue-800'
+                  } group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-indigo-600 transition-all duration-300`}>
+                    {lesson.title}
+                  </CardTitle>
+                  <CardDescription className={`${
+                    lesson.completed ? 'text-green-700' : 
+                    lesson.locked ? 'text-gray-600' : 
+                    'text-blue-700'
+                  }`}>
+                    {lesson.description}
+                  </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 relative z-10">
                   {/* Progress Bar */}
                   {!lesson.locked && (
                     <div className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span>Progress</span>
-                        <span className="font-medium">{lesson.progress}%</span>
+                      <div className="flex justify-between text-sm font-medium">
+                        <span className={lesson.completed ? 'text-green-700' : 'text-blue-700'}>Progress</span>
+                        <span className={`font-bold ${
+                          lesson.completed ? 'text-green-800' : 'text-blue-800'
+                        }`}>{lesson.progress}%</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
-                          className={`h-2 rounded-full transition-all duration-300 ${
-                            lesson.completed ? 'bg-green-600' : 'bg-blue-600'
+                      <div className="w-full bg-white/70 rounded-full h-3 overflow-hidden">
+                        <motion.div 
+                          className={`h-3 rounded-full transition-all duration-700 ${
+                            lesson.completed ? 'bg-gradient-to-r from-green-500 to-emerald-600' : 'bg-gradient-to-r from-blue-500 to-indigo-600'
                           }`}
-                          style={{ width: `${lesson.progress}%` }}
-                        ></div>
+                          initial={{ width: 0 }}
+                          animate={{ width: `${lesson.progress}%` }}
+                          transition={{ delay: 0.5 + index * 0.1, duration: 1 }}
+                        ></motion.div>
                       </div>
                     </div>
                   )}
 
                   {/* Lesson Metadata */}
-                  <div className="flex items-center justify-between text-sm text-gray-700">
-                    <div className="flex items-center gap-1">
+                  <div className="flex items-center justify-between text-sm">
+                    <div className={`flex items-center gap-1 font-medium ${
+                      lesson.completed ? 'text-green-700' : 
+                      lesson.locked ? 'text-gray-600' : 
+                      'text-blue-700'
+                    }`}>
                       <Clock className="h-4 w-4" />
                       {lesson.duration}
                     </div>
-                    <span className={`px-2 py-1 rounded-full text-xs ${
-                      lesson.difficulty === 'Beginner' ? 'bg-green-100 text-green-800' :
-                      lesson.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                      'bg-red-100 text-red-800'
-                    }`}>
+                    <motion.span 
+                      className={`px-3 py-1 rounded-full text-xs font-bold ${
+                        lesson.difficulty === 'Beginner' ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white' :
+                        lesson.difficulty === 'Intermediate' ? 'bg-gradient-to-r from-yellow-500 to-orange-600 text-white' :
+                        'bg-gradient-to-r from-red-500 to-pink-600 text-white'
+                      } shadow-lg`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
                       {lesson.difficulty}
-                    </span>
+                    </motion.span>
                   </div>
 
                   {/* Action Button */}
-                  <Button 
-                    className={`w-full ${
-                      lesson.completed ? 'bg-green-600 hover:bg-green-700' :
-                      lesson.locked ? 'bg-gray-300 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
-                    } text-white`}
-                    disabled={lesson.locked}
-                    onClick={() => handleStartLesson(lesson.id)}
-                  >
-                    {lesson.completed ? (
-                      <>
-                        <CheckCircle className="mr-2 h-4 w-4" />
-                        Review Lesson
-                      </>
-                    ) : lesson.locked ? (
-                      <>
-                        <Lock className="mr-2 h-4 w-4" />
-                        Locked
-                      </>
-                    ) : lesson.progress > 0 ? (
-                      <>
-                        <Play className="mr-2 h-4 w-4" />
-                        Continue
-                      </>
-                    ) : (
-                      <>
-                        <Play className="mr-2 h-4 w-4" />
-                        Start Lesson
-                      </>
-                    )}
-                  </Button>
+                  <div className="relative overflow-hidden rounded-lg">
+                    <motion.div
+                      whileHover={!lesson.locked ? { scale: 1.02 } : {}}
+                      whileTap={!lesson.locked ? { scale: 0.98 } : {}}
+                    >
+                      <Button 
+                        className={`w-full font-bold relative overflow-hidden group ${
+                          lesson.completed ? 'bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 shadow-lg shadow-green-500/30' :
+                          lesson.locked ? 'bg-gradient-to-r from-gray-400 to-gray-600 cursor-not-allowed' : 
+                          'bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 shadow-lg shadow-blue-500/30'
+                        } text-white border-2 border-white/20`}
+                        disabled={lesson.locked}
+                        onClick={() => handleStartLesson(lesson.id)}
+                      >
+                        <div className="absolute inset-0 bg-white/20 transform translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                        <div className="relative flex items-center justify-center">
+                          {lesson.completed ? (
+                            <>
+                              <CheckCircle className="mr-2 h-4 w-4" />
+                              Review Lesson
+                            </>
+                          ) : lesson.locked ? (
+                            <>
+                              <Lock className="mr-2 h-4 w-4" />
+                              Locked
+                            </>
+                          ) : lesson.progress > 0 ? (
+                            <>
+                              <Play className="mr-2 h-4 w-4" />
+                              Continue
+                            </>
+                          ) : (
+                            <>
+                              <Play className="mr-2 h-4 w-4" />
+                              Start Lesson
+                            </>
+                          )}
+                        </div>
+                      </Button>
+                    </motion.div>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -326,22 +397,69 @@ export default function LearnPage() {
           transition={{ delay: 0.8 }}
           className="mt-12"
         >
-          <Card className="border-purple-200">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-purple-800">Next Achievement</CardTitle>
-              <CardDescription>
-                Complete 2 more lessons to unlock the "Civic Champion" badge
+          <Card className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-900 border-purple-500/30 shadow-2xl shadow-purple-500/20">
+            {/* Animated Background */}
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-indigo-600"></div>
+              <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-20 -mt-20 animate-pulse"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full -ml-16 -mb-16 animate-pulse delay-1000"></div>
+            </div>
+
+            <CardHeader className="relative z-10 text-center">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 200, delay: 0.9 }}
+              >
+                <CardTitle className="text-3xl font-black text-white mb-2">
+                  Next Achievement
+                </CardTitle>
+              </motion.div>
+              <CardDescription className="text-lg text-purple-200 font-medium">
+                Complete 2 more lessons to unlock the <span className="text-yellow-400 font-bold">"Civic Champion"</span> badge
               </CardDescription>
             </CardHeader>
-            <CardContent className="text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-purple-100 rounded-full mb-4">
-                <Award className="h-10 w-10 text-purple-600" />
-              </div>
-              <p className="text-sm text-gray-600 mb-4">
-                Civic Champion - Complete 5 lessons and join the top 10% of informed citizens
-              </p>
-              <div className="w-full max-w-xs mx-auto bg-gray-200 rounded-full h-2">
-                <div className="bg-purple-600 h-2 rounded-full" style={{ width: "60%" }}></div>
+            <CardContent className="relative z-10 text-center space-y-6">
+              <motion.div 
+                className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mb-4 shadow-lg shadow-yellow-500/30"
+                initial={{ rotate: 0 }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                whileHover={{ scale: 1.1, rotate: 0 }}
+              >
+                <Award className="h-12 w-12 text-white" />
+              </motion.div>
+              
+              <motion.div 
+                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-purple-400/20"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.0 }}
+              >
+                <p className="text-white font-bold text-lg mb-2">
+                  🏆 Civic Champion
+                </p>
+                <p className="text-purple-200 text-sm leading-relaxed">
+                  Complete 5 lessons and join the top 10% of informed citizens leading Kenya's democratic revolution
+                </p>
+              </motion.div>
+
+              <div className="space-y-3">
+                <div className="flex justify-between text-sm font-medium text-purple-200">
+                  <span>Progress to Champion</span>
+                  <span className="text-yellow-400 font-bold">60%</span>
+                </div>
+                <div className="w-full max-w-xs mx-auto bg-black/30 rounded-full h-4 overflow-hidden border border-purple-400/20">
+                  <motion.div 
+                    className="h-4 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 shadow-lg shadow-yellow-500/30"
+                    initial={{ width: 0 }}
+                    animate={{ width: "60%" }}
+                    transition={{ delay: 1.1, duration: 1.5 }}
+                  ></motion.div>
+                </div>
+                <p className="text-xs text-purple-300 font-medium">
+                  3 of 5 lessons completed • 2 more to go!
+                </p>
               </div>
             </CardContent>
           </Card>

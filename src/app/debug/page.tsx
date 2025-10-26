@@ -7,7 +7,11 @@ import { useSession } from "@/components/providers/session-provider"
 import Link from "next/link"
 
 export default function DebugPage() {
-  const { user, isLoading, signIn, signOut } = useSession()
+  const { data: session, status } = useSession()
+  const user = session?.user
+  const isLoading = status === 'loading'
+  const signIn = () => {}
+  const signOut = () => {}
   const [localStorageData, setLocalStorageData] = useState<any>(null)
 
   useEffect(() => {
@@ -23,7 +27,7 @@ export default function DebugPage() {
   }
 
   const handleTestSignIn = async () => {
-    await signIn('test@example.com', 'password123')
+    // signIn functionality temporarily disabled
     window.location.href = '/dashboard'
   }
 

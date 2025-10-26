@@ -128,7 +128,7 @@ export function NetworkVisualization() {
         ctx.stroke()
 
         // Node label
-        ctx.fillStyle = "#1f2937"
+        ctx.fillStyle = "#ffffff"
         ctx.font = node.isUser ? "bold 14px Inter" : "12px Inter"
         ctx.textAlign = "center"
         ctx.textBaseline = "middle"
@@ -152,51 +152,53 @@ export function NetworkVisualization() {
   }, [])
 
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <span className="text-green-600">🌐</span>
+    <Card className="w-full bg-white/10 backdrop-blur-xl border-white/20 shadow-xl hover:shadow-2xl hover:shadow-white/10 transition-all duration-300">
+      <CardHeader className="bg-white/5 rounded-t-xl">
+        <CardTitle className="flex items-center gap-3 text-white">
+          <div className="p-2 bg-emerald-600 rounded-lg shadow-lg">
+            <span className="text-white text-lg">🌐</span>
+          </div>
           Your Civic Network
         </CardTitle>
-        <CardDescription>
+        <CardDescription className="text-gray-100 text-base">
           Visualize your impact - see how your invitations are spreading voter awareness
         </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-6">
         <div className="relative">
           <canvas
             ref={canvasRef}
-            className="w-full h-auto border border-gray-200 rounded-lg"
+            className="w-full h-auto border border-white/20 rounded-xl shadow-inner bg-white/5"
             style={{ maxWidth: "800px" }}
           />
-          <div className="mt-4 flex flex-wrap gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-green-600 rounded-full"></div>
-              <span>You</span>
+          <div className="mt-6 flex flex-wrap gap-6 text-sm">
+            <div className="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-full shadow-lg">
+              <div className="w-5 h-5 bg-emerald-500 rounded-full shadow-lg shadow-emerald-500/40"></div>
+              <span className="text-white font-medium">You</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-              <span>Direct Invites</span>
+            <div className="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-full shadow-lg">
+              <div className="w-5 h-5 bg-blue-500 rounded-full shadow-lg shadow-blue-500/40"></div>
+              <span className="text-white font-medium">Direct Invites</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-purple-500 rounded-full"></div>
-              <span>Second Level</span>
+            <div className="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-full shadow-lg">
+              <div className="w-5 h-5 bg-purple-500 rounded-full shadow-lg shadow-purple-500/40"></div>
+              <span className="text-white font-medium">Second Level</span>
             </div>
           </div>
         </div>
         
-        <div className="mt-6 grid grid-cols-3 gap-4">
-          <div className="text-center p-4 bg-green-50 rounded-lg">
-            <div className="text-2xl font-bold text-green-600">4</div>
-            <div className="text-sm text-gray-600">Direct Invites</div>
+        <div className="mt-8 grid grid-cols-3 gap-4">
+          <div className="text-center p-6 bg-gradient-to-br from-emerald-600/20 to-green-600/20 rounded-xl border border-emerald-400/30 shadow-lg shadow-emerald-500/20">
+            <div className="text-3xl font-bold text-emerald-300 mb-2">4</div>
+            <div className="text-sm text-white font-medium">Direct Invites</div>
           </div>
-          <div className="text-center p-4 bg-blue-50 rounded-lg">
-            <div className="text-2xl font-bold text-blue-600">4</div>
-            <div className="text-sm text-gray-600">Second Level</div>
+          <div className="text-center p-6 bg-gradient-to-br from-blue-600/20 to-indigo-600/20 rounded-xl border border-blue-400/30 shadow-lg shadow-blue-500/20">
+            <div className="text-3xl font-bold text-blue-300 mb-2">4</div>
+            <div className="text-sm text-white font-medium">Second Level</div>
           </div>
-          <div className="text-center p-4 bg-purple-50 rounded-lg">
-            <div className="text-2xl font-bold text-purple-600">8</div>
-            <div className="text-sm text-gray-600">Total Reach</div>
+          <div className="text-center p-6 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-xl border border-purple-400/30 shadow-lg shadow-purple-500/20">
+            <div className="text-3xl font-bold text-purple-300 mb-2">8</div>
+            <div className="text-sm text-white font-medium">Total Reach</div>
           </div>
         </div>
       </CardContent>

@@ -15,32 +15,32 @@ export default function ImpactPage() {
       value: "47",
       change: "+12 this week",
       icon: Users,
-      color: "text-green-600",
-      bgColor: "bg-green-100"
+      color: "text-green-400",
+      bgColor: "bg-green-900/30"
     },
     {
       title: "Voter Registrations",
       value: "23",
       change: "+5 this week",
       icon: Target,
-      color: "text-blue-600",
-      bgColor: "bg-blue-100"
+      color: "text-blue-400",
+      bgColor: "bg-blue-900/30"
     },
     {
       title: "Civic Score",
       value: "892",
       change: "+45 points",
       icon: Award,
-      color: "text-purple-600",
-      bgColor: "bg-purple-100"
+      color: "text-purple-400",
+      bgColor: "bg-purple-900/30"
     },
     {
       title: "Engagement Rate",
       value: "78%",
       change: "+3% this week",
       icon: BarChart3,
-      color: "text-orange-600",
-      bgColor: "bg-orange-100"
+      color: "text-orange-400",
+      bgColor: "bg-orange-900/30"
     }
   ]
 
@@ -76,7 +76,7 @@ export default function ImpactPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900">
       {/* Navigation */}
       <Navigation />
 
@@ -85,13 +85,13 @@ export default function ImpactPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          className="mb-8 bg-white/5 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-white/10"
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+          <h1 className="text-5xl font-bold text-white mb-4 drop-shadow-lg">
             Your Civic Impact
           </h1>
-          <p className="text-xl text-gray-600">
-            Track your influence and see how you're shaping Kenya's democratic future
+          <p className="text-xl text-gray-100 leading-relaxed max-w-3xl">
+            Track your influence and see how you're shaping Kenya's democratic future through your network and civic engagement
           </p>
         </motion.div>
 
@@ -103,19 +103,19 @@ export default function ImpactPage() {
           className="grid md:grid-cols-4 gap-6 mb-8"
         >
           {impactStats.map((stat, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow">
+            <Card key={index} className="bg-white/10 backdrop-blur-xl border-white/20 hover:bg-white/15 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-white/10">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <div className={`p-3 rounded-full ${stat.bgColor}`}>
+                  <div className={`p-3 rounded-full ${stat.bgColor} shadow-lg`}>
                     <stat.icon className={`h-6 w-6 ${stat.color}`} />
                   </div>
-                  <div className="flex items-center text-green-600 text-sm">
+                  <div className="flex items-center text-emerald-400 text-sm font-semibold bg-emerald-900/40 px-2 py-1 rounded-full">
                     <ArrowUp className="h-3 w-3 mr-1" />
                     {stat.change}
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</h3>
-                <p className="text-sm text-gray-600">{stat.title}</p>
+                <h3 className="text-3xl font-bold text-white mb-2 drop-shadow">{stat.value}</h3>
+                <p className="text-sm text-gray-100 font-medium">{stat.title}</p>
               </CardContent>
             </Card>
           ))}
@@ -137,51 +137,59 @@ export default function ImpactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <Card className="h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Award className="h-5 w-5 text-purple-600" />
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20 hover:bg-white/15 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-white/10 h-full">
+              <CardHeader className="bg-white/5 rounded-t-xl">
+                <CardTitle className="flex items-center gap-3 text-white">
+                  <div className="p-2 bg-purple-600 rounded-lg shadow-lg">
+                    <Award className="h-5 w-5 text-white" />
+                  </div>
                   Your Milestones
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-gray-100 text-base">
                   Celebrate your achievements on the civic journey
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 p-6">
                 {milestones.map((milestone, index) => (
                   <div
                     key={index}
-                    className={`flex items-start gap-4 p-4 rounded-lg ${
-                      milestone.achieved ? 'bg-green-50 border border-green-200' : 'bg-gray-50 border border-gray-200'
+                     className={`flex items-start gap-4 p-4 rounded-xl shadow-lg transition-all duration-300 hover:scale-[1.02] ${
+                      milestone.achieved 
+                        ? 'bg-gradient-to-r from-green-600/20 to-emerald-600/20 border border-green-400/30 shadow-green-500/20' 
+                        : 'bg-white/5 border border-white/20'
                     }`}
                   >
-                    <div className={`p-2 rounded-full ${
-                      milestone.achieved ? 'bg-green-600' : 'bg-gray-300'
+                     <div className={`p-3 rounded-full shadow-lg ${
+                      milestone.achieved 
+                        ? 'bg-gradient-to-br from-green-500 to-emerald-600 shadow-green-500/40' 
+                        : 'bg-gray-600 shadow-gray-600/40'
                     }`}>
-                      <milestone.icon className={`h-4 w-4 ${
-                        milestone.achieved ? 'text-white' : 'text-gray-500'
+                      <milestone.icon className={`h-5 w-5 ${
+                        milestone.achieved ? 'text-white' : 'text-gray-200'
                       }`} />
                     </div>
                     <div className="flex-1">
-                      <h4 className={`font-medium ${
-                        milestone.achieved ? 'text-green-800' : 'text-gray-600'
-                      }`}>
-                        {milestone.title}
-                      </h4>
-                      <p className={`text-sm ${
-                        milestone.achieved ? 'text-green-600' : 'text-gray-500'
-                      }`}>
-                        {milestone.description}
-                      </p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <Calendar className="h-3 w-3 text-gray-400" />
-                        <span className="text-xs text-gray-500">{milestone.date}</span>
-                        {milestone.achieved && (
-                          <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
-                            Achieved
-                          </span>
-                        )}
-                      </div>
+                       <h4 className={`font-bold text-lg mb-2 ${
+                         milestone.achieved ? 'text-emerald-300' : 'text-white'
+                       }`}>
+                         {milestone.title}
+                       </h4>
+                        <p className={`text-sm leading-relaxed mb-3 ${
+                          milestone.achieved ? 'text-emerald-100' : 'text-gray-100'
+                        }`}>
+                          {milestone.description}
+                        </p>
+                         <div className="flex items-center gap-3">
+                           <div className="flex items-center gap-1 bg-white/10 px-2 py-1 rounded-full">
+                             <Calendar className="h-3 w-3 text-blue-300" />
+                             <span className="text-xs text-blue-200 font-medium">{milestone.date}</span>
+                           </div>
+                         {milestone.achieved && (
+                           <span className="text-xs bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full font-semibold shadow-lg">
+                             ✓ Achieved
+                           </span>
+                         )}
+                       </div>
                     </div>
                   </div>
                 ))}
@@ -196,21 +204,24 @@ export default function ImpactPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <Card className="bg-gradient-to-r from-green-600 to-blue-600 text-white">
-            <CardContent className="p-8 text-center">
-              <TrendingUp className="h-16 w-16 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold mb-2">Keep Growing Your Impact!</h2>
-              <p className="text-green-100 mb-6 max-w-2xl mx-auto">
+          <Card className="bg-gradient-to-br from-emerald-600 via-green-600 to-teal-600 shadow-2xl border-0 overflow-hidden">
+            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+            <CardContent className="p-10 text-center relative">
+              <div className="bg-white/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                <TrendingUp className="h-10 w-10 text-white" />
+              </div>
+              <h2 className="text-3xl font-bold text-white mb-4 drop-shadow-lg">Keep Growing Your Impact!</h2>
+              <p className="text-white/90 text-lg mb-8 max-w-3xl mx-auto leading-relaxed">
                 Every friend you invite and every lesson you complete contributes to a stronger democracy in Kenya. 
                 Your voice matters, and together we can create lasting change.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-white text-green-600 hover:bg-gray-100">
-                  <Share2 className="mr-2 h-4 w-4" />
+                <Button className="bg-white text-green-600 hover:bg-gray-100 font-bold px-8 py-3 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                  <Share2 className="mr-2 h-5 w-5" />
                   Invite More Friends
                 </Button>
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-green-600">
-                  <Award className="mr-2 h-4 w-4" />
+                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-green-600 font-bold px-8 py-3 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                  <Award className="mr-2 h-5 w-5" />
                   View All Achievements
                 </Button>
               </div>

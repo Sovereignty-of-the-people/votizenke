@@ -3,7 +3,9 @@
 import { useSession } from "@/components/providers/session-provider"
 
 export default function TestPage() {
-  const { user, isLoading } = useSession()
+  const { data: session, status } = useSession()
+  const user = session?.user
+  const isLoading = status === 'loading'
 
   console.log('TestPage - isLoading:', isLoading)
   console.log('TestPage - user:', user)

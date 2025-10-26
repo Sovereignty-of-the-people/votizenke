@@ -181,7 +181,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
               Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-magenta-400">Revolution Path</span>
             </h2>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-white max-w-3xl mx-auto leading-relaxed">
               Select your mission. Each path is designed to maximize your impact in the fight for Kenya's future.
             </p>
           </div>
@@ -309,7 +309,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
               Revolutionary Tools for <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-red-400">Digital Activism</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-white max-w-4xl mx-auto leading-relaxed">
               Cutting-edge technology and strategic resources engineered specifically for Kenyan youth 
               to dismantle corrupt systems and build a new democratic future.
             </p>
@@ -400,7 +400,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
               Making Real <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-red-400">Impact</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-white max-w-4xl mx-auto leading-relaxed">
               Across Kenya, youth are rising up and taking back power. These aren't just numbers - 
               they're revolution in motion, powered by your voter registration and civic action.
             </p>
@@ -464,13 +464,13 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 They Built Empires With Our Taxes
               </h2>
-              <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+              <p className="text-xl text-white mb-6 leading-relaxed">
                 For decades, political elites have used our hard-earned taxes to build their business empires, 
                 fund their lavish lifestyles, and maintain their grip on power. They fly in private jets while we 
                 struggle to afford basic necessities. They send their children to elite schools abroad while our 
                 public education system crumbles.
               </p>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl text-white mb-8 leading-relaxed">
                 VotizenKE is our answer. We're the generation that says "ENOUGH!" We're using their own system 
                 against them - registering to vote in massive numbers, uniting across tribal lines, and taking 
                 back control of our country. Your voter card is your weapon. Unity is our strategy.
@@ -592,7 +592,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-8xl font-black text-white mb-8 leading-tight tracking-tight">
             Are You Ready to<br/>Take Back Kenya?
           </h2>
-          <p className="text-xl md:text-3xl text-gray-200 mb-16 max-w-5xl mx-auto leading-relaxed font-medium">
+          <p className="text-xl md:text-3xl text-white mb-16 max-w-5xl mx-auto leading-relaxed font-medium">
             Political elites have stolen our future for too long. They've built empires on our taxes, 
             divided us along tribal lines, and treated our country like their personal ATM.<br/><br/>
             <span className="text-red-400 font-black text-2xl md:text-4xl">ENOUGH IS ENOUGH.</span><br/>
@@ -619,10 +619,10 @@ export default function Home() {
           </div>
           
           <div className="text-center">
-            <p className="text-gray-400 text-2xl font-bold mb-4">
+            <p className="text-white text-2xl font-bold mb-4">
               #GenZRevolution #TakeBackKenya #OurTaxesOurFuture
             </p>
-            <div className="flex justify-center gap-8 text-gray-400">
+            <div className="flex justify-center gap-8 text-white">
               <span className="text-sm">🇰🇪 50,000+ YOUTH MOBILIZED</span>
               <span className="text-sm">📍 42/47 COUNTIES ACTIVE</span>
               <span className="text-sm">⚡ REVOLUTION IS NOW</span>

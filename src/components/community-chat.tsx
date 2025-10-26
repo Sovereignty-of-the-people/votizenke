@@ -116,12 +116,12 @@ export function CommunityChat() {
                       </Badge>
                     )}
                   </div>
-                  <p className="text-xs text-gray-600 mt-1">{channel.description}</p>
+                  <p className="text-xs text-gray-300 mt-1">{channel.description}</p>
                 </div>
               </div>
               <div className="flex items-center gap-1 mt-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-xs text-gray-500">{channel.activeUsers} online</span>
+                <span className="text-xs text-gray-300">{channel.activeUsers} online</span>
               </div>
             </button>
           ))}
@@ -139,7 +139,7 @@ export function CommunityChat() {
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1">
                 <div className={`w-2 h-2 rounded-full ${isOnline ? "bg-green-500" : "bg-gray-400"}`}></div>
-                <span className="text-sm text-gray-600">
+                <span className="text-sm text-gray-300">
                   {channels.find(c => c.id === selectedChannel)?.activeUsers} online
                 </span>
               </div>
@@ -156,11 +156,11 @@ export function CommunityChat() {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-medium text-sm">{message.user}</span>
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-gray-300">
                       {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-800">{message.content}</p>
+                  <p className="text-sm text-white">{message.content}</p>
                 </div>
               </div>
             ))}

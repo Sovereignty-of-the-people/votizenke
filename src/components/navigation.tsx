@@ -3,17 +3,17 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { useSession } from "@/components/providers/session-provider"
+import { signOut } from "next-auth/react"
 import Link from "next/link"
-import { Menu, X, Users, Bell, Settings } from "lucide-react"
+import { Menu, X, Users, Bell, Settings, LogOut } from "lucide-react"
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { user, signOut, isLoading } = useSession()
-
-  const handleSignOut = () => {
-    signOut()
-    // Force a page reload to ensure all state is cleared
-    window.location.href = "/"
+  const { data: session, status } = useSession()
+  const user = session?.user
+  const isLoading = status === 'loading'
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: "/" })
   }
 
   // Close mobile menu when user changes auth state
@@ -63,7 +63,7 @@ export function Navigation() {
                 <Link href="/community">
                   <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Community</Button>
                 </Link>
-                <Link href="/leadership-academy">
+                <Link href="/leadership">
                   <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Leadership</Button>
                 </Link>
                 <Link href="/analytics">
@@ -85,7 +85,7 @@ export function Navigation() {
                   <Button variant="ghost" size="sm" className="text-gray-400 hover:text-green-400 hover:bg-gray-800/50 p-2 rounded-lg transition-all duration-300">
                     <Settings className="h-4 w-4" />
                   </Button>
-                  <span className="text-sm text-gray-300 font-medium ml-2">Hi, {user.name}!</span>
+                  <span className="text-sm text-gray-300 font-medium ml-2">Hi, {user?.name || 'User'}!</span>
                   <Button variant="outline" className="border-green-500 text-green-400 hover:bg-green-500 hover:text-black px-4 py-2 rounded-lg transition-all duration-300 font-bold" onClick={handleSignOut}>
                     Sign Out
                   </Button>
@@ -100,7 +100,7 @@ export function Navigation() {
                 <Link href="/community">
                   <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Community</Button>
                 </Link>
-                <Link href="/leadership-academy">
+                <Link href="/leadership">
                   <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Leadership</Button>
                 </Link>
                 <Link href="/analytics">
@@ -136,7 +136,7 @@ export function Navigation() {
               {user ? (
                 // Authenticated user mobile navigation
                 <>
-                  <Link href="/leadership-academy" onClick={() => setIsMenuOpen(false)}>
+                  <Link href="/leadership" onClick={() => setIsMenuOpen(false)}>
                     <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-green-400 hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium">
                       Leadership
                     </Button>
@@ -187,7 +187,7 @@ export function Navigation() {
                       Community
                     </Button>
                   </Link>
-                  <Link href="/leadership-academy" onClick={() => setIsMenuOpen(false)}>
+                  <Link href="/leadership" onClick={() => setIsMenuOpen(false)}>
                     <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-green-400 hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium">
                       Leadership
                     </Button>

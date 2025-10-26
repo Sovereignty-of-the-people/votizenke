@@ -127,50 +127,62 @@ export function CivicPolls() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-2xl font-bold flex items-center gap-2">
-            <BarChart3 className="h-6 w-6 text-green-600" />
-            Civic Polls & Surveys
-          </h2>
-          <p className="text-gray-600">Make your voice heard on issues that matter</p>
+      <div className="bg-gradient-to-br from-gray-800/80 to-black/80 backdrop-blur-xl p-6 rounded-2xl border border-gray-700">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-2xl font-bold flex items-center gap-2 text-white">
+              <BarChart3 className="h-6 w-6 text-green-400" />
+              Civic Polls & Surveys
+            </h2>
+            <p className="text-gray-300">Make your voice heard on issues that matter</p>
+          </div>
+          <Button className="bg-green-600 hover:bg-green-700 text-white font-bold shadow-lg shadow-green-500/30">
+            Create New Poll
+          </Button>
         </div>
-        <Button className="bg-green-600 hover:bg-green-700">
-          Create New Poll
-        </Button>
       </div>
 
       {/* Category Filter */}
-      <div className="flex gap-2 flex-wrap">
-        {categories.map((category) => (
-          <Button
-            key={category}
-            variant={selectedCategory === category ? "default" : "outline"}
-            size="sm"
-            onClick={() => setSelectedCategory(category)}
-            className={selectedCategory === category ? "bg-green-600" : ""}
-          >
-            {category}
-          </Button>
-        ))}
+      <div className="bg-black/50 backdrop-blur-sm p-4 rounded-xl border border-gray-700">
+        <div className="flex gap-2 flex-wrap">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              variant={selectedCategory === category ? "default" : "outline"}
+              size="sm"
+              onClick={() => setSelectedCategory(category)}
+              className={`${
+                selectedCategory === category 
+                  ? 'bg-green-600 hover:bg-green-700 text-white shadow-lg shadow-green-500/30 border-0' 
+                  : 'bg-gray-800/50 hover:bg-gray-700/50 text-gray-300 border-gray-600 hover:border-green-500/50'
+              }`}
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
       </div>
 
       {/* Polls Grid */}
       <div className="grid md:grid-cols-2 gap-6">
         {filteredPolls.map((poll) => (
-          <Card key={poll.id} className="hover:shadow-lg transition-shadow">
-            <CardHeader>
+          <Card key={poll.id} className="bg-gradient-to-br from-gray-800/80 to-black/80 backdrop-blur-xl border-gray-700 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300">
+            <CardHeader className="relative z-10">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <CardTitle className="text-lg mb-2">{poll.question}</CardTitle>
-                  <CardDescription>{poll.description}</CardDescription>
+                  <CardTitle className="text-lg mb-2 text-white font-bold">{poll.question}</CardTitle>
+                  <CardDescription className="text-gray-300">{poll.description}</CardDescription>
                 </div>
                 <div className="flex flex-col items-end gap-2">
-                  <Badge variant={poll.isActive ? "default" : "secondary"}>
+                  <Badge className={`${
+                    poll.isActive 
+                      ? 'bg-green-600 hover:bg-green-700 text-white shadow-lg shadow-green-500/30' 
+                      : 'bg-gray-600 hover:bg-gray-700 text-gray-300'
+                  }`}>
                     {poll.isActive ? "Active" : "Closed"}
                   </Badge>
                   {poll.timeLeft && (
-                    <div className="flex items-center gap-1 text-xs text-gray-500">
+                    <div className="flex items-center gap-1 text-xs text-gray-300 bg-black/30 px-2 py-1 rounded-full">
                       <Clock className="h-3 w-3" />
                       {poll.timeLeft}
                     </div>
@@ -179,7 +191,7 @@ export function CivicPolls() {
               </div>
             </CardHeader>
             
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 relative z-10">
               {/* Poll Options */}
               <div className="space-y-3">
                 {poll.options.map((option) => {
@@ -191,19 +203,21 @@ export function CivicPolls() {
                       {hasVoted ? (
                         <div className="space-y-2">
                           <div className="flex items-center justify-between">
-                            <span className={`text-sm ${isSelected ? "font-semibold text-green-600" : ""}`}>
+                            <span className={`text-sm font-medium ${
+                              isSelected ? "text-green-400 font-bold" : "text-white"
+                            }`}>
                               {option.text}
                             </span>
-                            <span className="text-sm text-gray-600">
+                            <span className="text-sm text-gray-300">
                               {option.percentage.toFixed(1)}% ({option.votes})
                             </span>
                           </div>
-                          <Progress value={option.percentage} className="h-2" />
+                          <Progress value={option.percentage} className="h-2 bg-green-600" />
                         </div>
                       ) : (
                         <Button
                           variant="outline"
-                          className="w-full justify-start text-left h-auto p-3"
+                          className="w-full justify-start text-left h-auto p-3 bg-gray-800/50 hover:bg-gray-700/50 text-white border-gray-600 hover:border-green-500/50"
                           onClick={() => handleVote(poll.id, option.id)}
                         >
                           {option.text}
@@ -215,23 +229,24 @@ export function CivicPolls() {
               </div>
 
               {/* Poll Footer */}
-              <div className="flex items-center justify-between pt-4 border-t">
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <div className="flex items-center gap-1">
-                    <Users className="h-4 w-4" />
+              <div className="flex items-center justify-between pt-4 border-t border-gray-700">
+                <div className="flex items-center gap-4 text-sm text-gray-300">
+                  <div className="flex items-center gap-1 bg-black/30 px-2 py-1 rounded-full">
+                    <Users className="h-4 w-4 text-green-400" />
                     {poll.totalVotes} votes
                   </div>
-                  <div className="flex items-center gap-1">
-                    <MessageSquare className="h-4 w-4" />
+                  <div className="flex items-center gap-1 bg-black/30 px-2 py-1 rounded-full">
+                    <MessageSquare className="h-4 w-4 text-blue-400" />
                     23 comments
                   </div>
                 </div>
                 <Button
-                  variant="ghost"
                   size="sm"
                   onClick={() => handleShare(poll)}
+                  className="bg-green-600 hover:bg-green-700 text-white font-bold shadow-lg shadow-green-500/30"
                 >
-                  <Share2 className="h-4 w-4" />
+                  <Share2 className="mr-2 h-4 w-4" />
+                  Share
                 </Button>
               </div>
             </CardContent>
@@ -240,13 +255,15 @@ export function CivicPolls() {
       </div>
 
       {/* Create Poll CTA */}
-      <Card className="bg-gradient-to-r from-green-50 to-blue-50 border-green-200">
-        <CardContent className="p-6 text-center">
-          <h3 className="text-xl font-semibold mb-2">Have a question for the community?</h3>
-          <p className="text-gray-600 mb-4">Create polls to understand what Kenyan youth really think</p>
-          <Button className="bg-green-600 hover:bg-green-700">
-            Create Your First Poll
-          </Button>
+      <Card className="bg-gradient-to-br from-gray-800/80 to-black/80 backdrop-blur-xl border-gray-700 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300">
+        <CardContent className="p-8 text-center relative z-10">
+          <div className="max-w-md mx-auto space-y-4">
+            <h3 className="text-2xl font-bold text-white mb-2">Have a question for the community?</h3>
+            <p className="text-gray-300 mb-6 text-lg">Create polls to understand what Kenyan youth really think about important issues</p>
+            <Button className="bg-green-600 hover:bg-green-700 text-white font-bold shadow-lg shadow-green-500/30 px-8 py-3 text-lg">
+              Create Your First Poll
+            </Button>
+          </div>
         </CardContent>
       </Card>
     </div>

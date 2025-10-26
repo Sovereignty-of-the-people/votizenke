@@ -7,7 +7,9 @@ import { PredictiveTools } from "@/components/predictive-tools"
 import { motion } from "framer-motion"
 
 export default function PredictivePage() {
-  const { user, isLoading } = useSession()
+  const { data: session, status } = useSession()
+  const user = session?.user
+  const isLoading = status === 'loading'
 
   useEffect(() => {
     if (!isLoading && !user) {

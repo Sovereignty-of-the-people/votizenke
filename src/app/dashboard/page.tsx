@@ -142,7 +142,7 @@ export default function Dashboard() {
               <h1 className="text-5xl md:text-7xl font-black text-white mb-4">
                 Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-red-400">{user?.name || 'Revolutionary'}</span>! 🇰🇪
               </h1>
-              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+              <p className="text-xl md:text-2xl text-white leading-relaxed">
                 Your revolutionary command center - Track your journey to reclaim Kenya
               </p>
             </div>
@@ -168,7 +168,7 @@ export default function Dashboard() {
               <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
               <span className="text-green-400 font-bold">REVOLUTIONARY ACTIVE</span>
             </div>
-            <span className="text-gray-400">•</span>
+            <span className="text-white">•</span>
             <span className="text-white font-medium">LEVEL {Math.floor(learningProgress/25) + 1} LEADER</span>
           </div>
         </motion.div>

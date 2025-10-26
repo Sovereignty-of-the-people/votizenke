@@ -380,7 +380,7 @@ export function EmotionalHero() {
                 <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="text-2xl font-bold text-white">{slides[currentSlide].stats}</span>
               </div>
-              <div className="text-lg text-gray-300">
+              <div className="text-lg text-white">
                 Join revolution now
               </div>
             </div>

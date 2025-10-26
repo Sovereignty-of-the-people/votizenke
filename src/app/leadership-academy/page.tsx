@@ -29,18 +29,18 @@ export default function LeadershipAcademy() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
       <Navigation />
-      <main className="py-16 md:py-24">
+      <main className="pt-8 py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-green-100 text-green-800 text-sm px-4 py-2">
               Leadership Academy
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Become a Leader for Change
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-white max-w-3xl mx-auto">
               Our Leadership Academy provides you with the skills and knowledge to become an effective civic leader.
             </p>
           </div>
@@ -55,7 +55,7 @@ export default function LeadershipAcademy() {
                   <CardTitle>{course.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">{course.description}</p>
+                  <p className="text-white">{course.description}</p>
                 </CardContent>
               </Card>
             ))}

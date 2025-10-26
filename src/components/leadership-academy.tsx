@@ -121,6 +121,118 @@ export function LeadershipAcademy() {
       modules: 7,
       certificate: true,
       topics: ["Youth Psychology", "Grassroots Organizing", "Event Planning", "Leadership Development"]
+    },
+    {
+      id: "constitutional-law",
+      title: "Constitutional Law & Governance",
+      description: "Deep dive into Kenya's constitutional framework and democratic governance principles",
+      duration: "10 weeks",
+      level: "Advanced",
+      progress: 0,
+      enrolled: false,
+      instructor: "Prof. James Muriuki",
+      rating: 4.9,
+      modules: 12,
+      certificate: true,
+      topics: ["Constitutional History", "Bill of Rights", "Separation of Powers", "Judicial Review"]
+    },
+    {
+      id: "public-speaking",
+      title: "Public Speaking & Oratory Mastery",
+      description: "Develop powerful communication skills to inspire and mobilize communities",
+      duration: "4 weeks",
+      level: "Beginner",
+      progress: 0,
+      enrolled: false,
+      instructor: "Grace Njeri",
+      rating: 4.7,
+      modules: 6,
+      certificate: true,
+      topics: ["Speech Writing", "Body Language", "Voice Modulation", "Audience Engagement"]
+    },
+    {
+      id: "conflict-resolution",
+      title: "Conflict Resolution & Peacebuilding",
+      description: "Learn mediation techniques and strategies for peaceful conflict resolution",
+      duration: "6 weeks",
+      level: "Intermediate",
+      progress: 0,
+      enrolled: false,
+      instructor: "Dr. Samuel Kiprop",
+      rating: 4.8,
+      modules: 8,
+      certificate: true,
+      topics: ["Mediation Skills", "Cultural Sensitivity", "Negotiation Tactics", "Community Dialogue"]
+    },
+    {
+      id: "financial-literacy",
+      title: "Financial Literacy for Leaders",
+      description: "Essential financial management skills for community organizations and campaigns",
+      duration: "5 weeks",
+      level: "Beginner",
+      progress: 0,
+      enrolled: false,
+      instructor: "David Kamau",
+      rating: 4.5,
+      modules: 7,
+      certificate: true,
+      topics: ["Budget Planning", "Fundraising", "Financial Reporting", "Resource Management"]
+    },
+    {
+      id: "media-relations",
+      title: "Media Relations & Strategic Communications",
+      description: "Master media engagement and strategic communication for maximum impact",
+      duration: "7 weeks",
+      level: "Intermediate",
+      progress: 0,
+      enrolled: false,
+      instructor: "Esther Wanjiru",
+      rating: 4.8,
+      modules: 9,
+      certificate: true,
+      topics: ["Press Relations", "Crisis Communication", "Brand Building", "Digital Storytelling"]
+    },
+    {
+      id: "community-development",
+      title: "Community Development & Project Management",
+      description: "Learn to design and implement sustainable community development projects",
+      duration: "8 weeks",
+      level: "Advanced",
+      progress: 0,
+      enrolled: false,
+      instructor: "Dr. Peter Ochieng",
+      rating: 4.7,
+      modules: 10,
+      certificate: true,
+      topics: ["Project Planning", "Needs Assessment", "Stakeholder Management", "Impact Evaluation"]
+    },
+    {
+      id: "ethical-leadership",
+      title: "Ethical Leadership & Integrity",
+      description: "Explore the foundations of ethical leadership and anti-corruption strategies",
+      duration: "6 weeks",
+      level: "Intermediate",
+      progress: 0,
+      enrolled: false,
+      instructor: "Rev. Dr. Mary Atieno",
+      rating: 4.9,
+      modules: 8,
+      certificate: true,
+      topics: ["Ethical Frameworks", "Transparency", "Accountability", "Public Service Ethics"]
+    },
+    {
+      id: "technology-innovation",
+      title: "Technology & Innovation in Governance",
+      description: "Leverage emerging technologies for transparent and efficient governance",
+      duration: "9 weeks",
+      level: "Advanced",
+      progress: 0,
+      enrolled: false,
+      instructor: "Tech Innovator Kevin Mutiso",
+      rating: 4.8,
+      modules: 11,
+      certificate: true,
+      topics: ["Digital Governance", "Data Analytics", "Civic Tech", "Blockchain Applications"]
     }
   ]
 
@@ -397,10 +509,10 @@ export function LeadershipAcademy() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="space-y-6"
-        >
-          <div className="grid md:grid-cols-2 gap-8">
-            {courses.map((course, index) => (
+           className="space-y-6"
+         >
+           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+             {courses.map((course, index) => (
               <div key={course.id} className="relative group">
                 <div className="bg-gradient-to-br from-gray-800/80 to-black/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700 hover:border-green-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/20">
                   {/* Corner Tech Brackets */}
@@ -414,10 +526,10 @@ export function LeadershipAcademy() {
                       <h3 className="text-xl font-black text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-green-400 group-hover:to-red-400 transition-all duration-300">
                         {course.title}
                       </h3>
-                      <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                        {course.description}
-                      </p>
-                      <div className="flex items-center gap-6 text-sm text-gray-300">
+                       <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                         {course.description}
+                       </p>
+                       <div className="flex items-center gap-6 text-sm text-gray-200">
                         <div className="flex items-center gap-2">
                           <Clock className="h-4 w-4 text-green-400" />
                           <span>{course.duration}</span>
@@ -439,10 +551,10 @@ export function LeadershipAcademy() {
                   
                   {course.enrolled && (
                     <div className="mb-6">
-                      <div className="flex justify-between text-sm mb-2">
-                        <span className="text-gray-400">Progress</span>
-                        <span className="text-green-400 font-bold">{course.progress}%</span>
-                      </div>
+                       <div className="flex justify-between text-sm mb-2">
+                         <span className="text-gray-200">Progress</span>
+                         <span className="text-green-400 font-bold">{course.progress}%</span>
+                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-3">
                         <div 
                           className="bg-gradient-to-r from-green-500 to-green-600 h-3 rounded-full transition-all duration-500 shadow-lg shadow-green-500/30"
@@ -458,7 +570,7 @@ export function LeadershipAcademy() {
                       {course.topics.map((topic, idx) => (
                         <span 
                           key={idx}
-                          className="px-3 py-1 bg-gradient-to-r from-green-600/20 to-red-600/20 border border-green-500/30 text-gray-300 text-xs rounded-full font-medium"
+                           className="px-3 py-1 bg-gradient-to-r from-green-600/20 to-red-600/20 border border-green-500/30 text-gray-200 text-xs rounded-full font-medium"
                         >
                           {topic}
                         </span>
@@ -466,8 +578,8 @@ export function LeadershipAcademy() {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-700">
-                    <div className="flex items-center gap-4 text-sm text-gray-400">
+                   <div className="flex items-center justify-between pt-4 border-t border-gray-700">
+                     <div className="flex items-center gap-4 text-sm text-gray-200">
                       <div className="flex items-center gap-2">
                         <BookOpen className="h-4 w-4 text-purple-400" />
                         <span>{course.modules} modules</span>
@@ -528,8 +640,8 @@ export function LeadershipAcademy() {
                       <h3 className="text-xl font-black text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-green-400 group-hover:to-red-400 transition-all duration-300">
                         {mentorship.mentor}
                       </h3>
-                      <p className="text-gray-400 text-sm mb-3">{mentorship.role}</p>
-                      <div className="flex items-center gap-6 text-sm text-gray-300">
+                       <p className="text-gray-300 text-sm mb-3">{mentorship.role}</p>
+                       <div className="flex items-center gap-6 text-sm text-gray-200">
                         <div className="flex items-center gap-2">
                           <Star className="h-4 w-4 text-yellow-400" />
                           <span>{mentorship.rating}</span>
@@ -548,7 +660,7 @@ export function LeadershipAcademy() {
                       {mentorship.expertise.map((skill, idx) => (
                         <span 
                           key={idx}
-                          className="px-3 py-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 text-gray-300 text-xs rounded-full font-medium"
+                           className="px-3 py-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 text-gray-200 text-xs rounded-full font-medium"
                         >
                           {skill}
                         </span>
@@ -557,10 +669,10 @@ export function LeadershipAcademy() {
                   </div>
 
                   <div className="flex items-center justify-between pt-4 border-t border-gray-700">
-                    <div>
-                      <div className="text-sm text-gray-400 mb-1">
-                        {mentorship.sessions} sessions available
-                      </div>
+                     <div>
+                       <div className="text-sm text-gray-200 mb-1">
+                         {mentorship.sessions} sessions available
+                       </div>
                       <div className="font-bold text-green-400 text-lg">
                         {mentorship.price}
                       </div>
@@ -611,10 +723,10 @@ export function LeadershipAcademy() {
                         <span className={`px-4 py-2 rounded-full text-sm font-bold ${getLevelColor(cert.difficulty)} border border-current/20`}>
                           {cert.difficulty}
                         </span>
-                        <div className="flex items-center gap-2 text-sm text-gray-300">
-                          <Clock className="h-4 w-4 text-blue-400" />
-                          <span>{cert.duration}</span>
-                        </div>
+                         <div className="flex items-center gap-2 text-sm text-gray-200">
+                           <Clock className="h-4 w-4 text-blue-400" />
+                           <span>{cert.duration}</span>
+                         </div>
                       </div>
                     </div>
                   </div>
@@ -626,12 +738,12 @@ export function LeadershipAcademy() {
                         REQUIREMENTS
                       </h4>
                       <ul className="space-y-3">
-                        {cert.requirements.map((req, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-sm text-gray-300">
-                            <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
-                            <span>{req}</span>
-                          </li>
-                        ))}
+                         {cert.requirements.map((req, idx) => (
+                           <li key={idx} className="flex items-start gap-3 text-sm text-gray-200">
+                             <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                             <span>{req}</span>
+                           </li>
+                         ))}
                       </ul>
                     </div>
                     
@@ -641,12 +753,12 @@ export function LeadershipAcademy() {
                         BENEFITS
                       </h4>
                       <ul className="space-y-3">
-                        {cert.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-sm text-gray-300">
-                            <TrendingUp className="h-5 w-5 text-purple-400 mt-0.5 flex-shrink-0" />
-                            <span>{benefit}</span>
-                          </li>
-                        ))}
+                         {cert.benefits.map((benefit, idx) => (
+                           <li key={idx} className="flex items-start gap-3 text-sm text-gray-200">
+                             <TrendingUp className="h-5 w-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                             <span>{benefit}</span>
+                           </li>
+                         ))}
                       </ul>
                     </div>
                   </div>
