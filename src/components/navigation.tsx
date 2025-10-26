@@ -57,35 +57,20 @@ export function Navigation() {
             {user ? (
               // Authenticated user navigation
               <>
-                <Link href="/dashboard">
-                  <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Dashboard</Button>
-                </Link>
                 <Link href="/community">
                   <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Community</Button>
                 </Link>
-                <Link href="/leadership">
+                <Link href="/learn">
+                  <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Learn</Button>
+                </Link>
+                <Link href="/leadership-academy">
                   <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Leadership</Button>
                 </Link>
-                <Link href="/analytics">
-                  <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Analytics</Button>
-                </Link>
-                <Link href="/predictive">
-                  <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Predictive</Button>
-                </Link>
-                <Link href="/campaign">
-                  <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Campaign</Button>
-                </Link>
-                <Link href="/chapters">
-                  <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Chapters</Button>
+                <Link href="/impact">
+                  <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Impact</Button>
                 </Link>
                 <div className="flex items-center space-x-2 ml-4 pl-4 border-l border-gray-700">
-                  <Button variant="ghost" size="sm" className="text-gray-400 hover:text-green-400 hover:bg-gray-800/50 p-2 rounded-lg transition-all duration-300">
-                    <Bell className="h-4 w-4" />
-                  </Button>
-                  <Button variant="ghost" size="sm" className="text-gray-400 hover:text-green-400 hover:bg-gray-800/50 p-2 rounded-lg transition-all duration-300">
-                    <Settings className="h-4 w-4" />
-                  </Button>
-                  <span className="text-sm text-gray-300 font-medium ml-2">Hi, {user?.name || 'User'}!</span>
+                  <span className="text-sm text-gray-300 font-medium">Hi, {user?.name || 'User'}!</span>
                   <Button variant="outline" className="border-green-500 text-green-400 hover:bg-green-500 hover:text-black px-4 py-2 rounded-lg transition-all duration-300 font-bold" onClick={handleSignOut}>
                     Sign Out
                   </Button>
@@ -100,14 +85,14 @@ export function Navigation() {
                 <Link href="/community">
                   <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Community</Button>
                 </Link>
-                <Link href="/leadership">
+                <Link href="/leadership-academy">
                   <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Leadership</Button>
                 </Link>
-                <Link href="/analytics">
-                  <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">See Impact</Button>
+                <Link href="/impact">
+                  <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Impact</Button>
                 </Link>
-                <Link href="/partners">
-                  <Button variant="ghost" className="text-gray-300 hover:text-green-400 hover:bg-gray-800/50 px-4 py-2 rounded-lg transition-all duration-300 font-medium">Partners</Button>
+                <Link href="/auth/signup">
+                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black px-6 py-2 rounded-lg transition-all duration-300 font-bold">Sign Up</Button>
                 </Link>
                 <Link href="/auth/signin">
                   <Button className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-2 rounded-lg transition-all duration-300 font-bold shadow-lg shadow-green-500/30 hover:shadow-green-500/50">Sign In</Button>
@@ -136,29 +121,24 @@ export function Navigation() {
               {user ? (
                 // Authenticated user mobile navigation
                 <>
-                  <Link href="/leadership" onClick={() => setIsMenuOpen(false)}>
+                  <Link href="/community" onClick={() => setIsMenuOpen(false)}>
+                    <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-green-400 hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium">
+                      Community
+                    </Button>
+                  </Link>
+                  <Link href="/learn" onClick={() => setIsMenuOpen(false)}>
+                    <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-green-400 hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium">
+                      Learn
+                    </Button>
+                  </Link>
+                  <Link href="/leadership-academy" onClick={() => setIsMenuOpen(false)}>
                     <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-green-400 hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium">
                       Leadership
                     </Button>
                   </Link>
-                  <Link href="/analytics" onClick={() => setIsMenuOpen(false)}>
+                  <Link href="/impact" onClick={() => setIsMenuOpen(false)}>
                     <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-green-400 hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium">
-                      Analytics
-                    </Button>
-                  </Link>
-                  <Link href="/predictive" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-green-400 hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium">
-                      Predictive
-                    </Button>
-                  </Link>
-                  <Link href="/campaign" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-green-400 hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium">
-                      Campaign
-                    </Button>
-                  </Link>
-                  <Link href="/chapters" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-green-400 hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium">
-                      Chapters
+                      Impact
                     </Button>
                   </Link>
                   <div className="pt-4 border-t border-gray-700">
@@ -187,26 +167,28 @@ export function Navigation() {
                       Community
                     </Button>
                   </Link>
-                  <Link href="/leadership" onClick={() => setIsMenuOpen(false)}>
+                  <Link href="/leadership-academy" onClick={() => setIsMenuOpen(false)}>
                     <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-green-400 hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium">
                       Leadership
                     </Button>
                   </Link>
-                  <Link href="/analytics" onClick={() => setIsMenuOpen(false)}>
+                  <Link href="/impact" onClick={() => setIsMenuOpen(false)}>
                     <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-green-400 hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium">
-                      See Impact
+                      Impact
                     </Button>
                   </Link>
-                  <Link href="/partners" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-green-400 hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium">
-                      Partners
-                    </Button>
-                  </Link>
-                  <Link href="/auth/signin" onClick={() => setIsMenuOpen(false)}>
-                    <Button className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-lg transition-all duration-300 font-bold shadow-lg shadow-green-500/30">
-                      Sign In
-                    </Button>
-                  </Link>
+                  <div className="pt-4 space-y-2">
+                    <Link href="/auth/signup" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="outline" className="w-full border-white text-white hover:bg-white hover:text-black rounded-lg transition-all duration-300 font-bold">
+                        Sign Up
+                      </Button>
+                    </Link>
+                    <Link href="/auth/signin" onClick={() => setIsMenuOpen(false)}>
+                      <Button className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-lg transition-all duration-300 font-bold shadow-lg shadow-green-500/30">
+                        Sign In
+                      </Button>
+                    </Link>
+                  </div>
                 </>
               )}
             </div>

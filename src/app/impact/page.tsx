@@ -85,7 +85,7 @@ export default function ImpactPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8 bg-white/5 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-white/10"
+          className="mb-8 bg-gradient-to-r from-green-900/20 to-red-900/20 rounded-2xl p-8 shadow-2xl border border-green-500/30"
         >
           <h1 className="text-5xl font-bold text-white mb-4 drop-shadow-lg">
             Your Civic Impact
@@ -103,7 +103,7 @@ export default function ImpactPage() {
           className="grid md:grid-cols-4 gap-6 mb-8"
         >
           {impactStats.map((stat, index) => (
-            <Card key={index} className="bg-white/10 backdrop-blur-xl border-white/20 hover:bg-white/15 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-white/10">
+            <Card key={index} className="bg-gray-800/80 border-gray-700 hover:border-green-500/50 transition-all duration-300 shadow-xl">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className={`p-3 rounded-full ${stat.bgColor} shadow-lg`}>
@@ -137,15 +137,15 @@ export default function ImpactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <Card className="bg-white/10 backdrop-blur-xl border-white/20 hover:bg-white/15 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-white/10 h-full">
-              <CardHeader className="bg-white/5 rounded-t-xl">
+            <Card className="bg-gray-800/80 border-gray-700 hover:border-green-500/50 transition-all duration-300 shadow-xl h-full">
+              <CardHeader>
                 <CardTitle className="flex items-center gap-3 text-white">
                   <div className="p-2 bg-purple-600 rounded-lg shadow-lg">
                     <Award className="h-5 w-5 text-white" />
                   </div>
                   Your Milestones
                 </CardTitle>
-                <CardDescription className="text-gray-100 text-base">
+                <CardDescription className="text-gray-300 text-base">
                   Celebrate your achievements on the civic journey
                 </CardDescription>
               </CardHeader>
@@ -155,8 +155,8 @@ export default function ImpactPage() {
                     key={index}
                      className={`flex items-start gap-4 p-4 rounded-xl shadow-lg transition-all duration-300 hover:scale-[1.02] ${
                       milestone.achieved 
-                        ? 'bg-gradient-to-r from-green-600/20 to-emerald-600/20 border border-green-400/30 shadow-green-500/20' 
-                        : 'bg-white/5 border border-white/20'
+                        ? 'bg-gradient-to-r from-green-600/20 to-emerald-600/20 border border-green-400/30' 
+                        : 'bg-gray-700/30 border border-gray-600'
                     }`}
                   >
                      <div className={`p-3 rounded-full shadow-lg ${
@@ -204,9 +204,8 @@ export default function ImpactPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <Card className="bg-gradient-to-br from-emerald-600 via-green-600 to-teal-600 shadow-2xl border-0 overflow-hidden">
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-            <CardContent className="p-10 text-center relative">
+          <Card className="bg-gradient-to-br from-emerald-600 via-green-600 to-teal-600 shadow-2xl border-0">
+            <CardContent className="p-10 text-center">
               <div className="bg-white/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
                 <TrendingUp className="h-10 w-10 text-white" />
               </div>

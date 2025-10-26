@@ -1,7 +1,7 @@
 "use client"
 
 import { Navigation } from "@/components/navigation"
-import { LeadershipAcademy } from "@/components/leadership-academy"
+import { LeadershipAcademyNew } from "@/components/leadership-academy-new"
 import { motion } from "framer-motion"
 
 export default function LeadershipPage() {
@@ -15,7 +15,7 @@ export default function LeadershipPage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <LeadershipAcademy />
+          <LeadershipAcademyNew />
         </motion.div>
       </div>
     </div>

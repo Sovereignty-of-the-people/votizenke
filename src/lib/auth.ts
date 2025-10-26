@@ -1,9 +1,11 @@
+import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { prisma } from "@/lib/prisma"
+import bcrypt from "bcrypt"
 
-export const authConfig = {
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -21,15 +23,35 @@ export const authConfig = {
           return null
         }
 
-        // For demo purposes, accept any email/password
-        // In production, you'd verify against your database
-        const user = {
-          id: "1",
-          email: credentials.email as string,
-          name: "Demo User",
-        }
+        try {
+          // Find user in database by email
+          const user = await prisma.user.findUnique({
+            where: { email: credentials.email as string }
+          })
 
-        return user
+          if (!user || !user.password) {
+            return null
+          }
+
+          // Verify password with bcrypt
+          const isValidPassword = await bcrypt.compare(
+            credentials.password as string,
+            user.password
+          )
+
+          if (!isValidPassword) {
+            return null
+          }
+
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+          }
+        } catch (error) {
+          console.error("Auth error:", error)
+          return null
+        }
       }
     })
   ],
@@ -43,14 +65,18 @@ export const authConfig = {
     async jwt({ token, user }: any) {
       if (user) {
         token.id = user.id
+        token.name = user.name
+        token.email = user.email
       }
       return token
     },
     async session({ session, token }: any) {
-      if (token) {
+      if (token && session.user) {
         session.user.id = token.id as string
+        session.user.name = token.name as string
+        session.user.email = token.email as string
       }
       return session
     },
   },
-}
+})

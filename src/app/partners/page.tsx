@@ -100,7 +100,7 @@ export default function Partners() {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-white/20 text-white hover:bg-white hover:text-gray-900 font-bold px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                className="border-green-400 text-green-300 hover:bg-green-500 hover:text-white font-bold px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
                 onClick={handleContactUs}
               >
                 <Mail className="mr-2 h-5 w-5" />
@@ -266,7 +266,7 @@ export default function Partners() {
             <Button 
               size="lg" 
               variant="outline"
-              className="border-white/20 text-white hover:bg-white hover:text-gray-900 font-bold px-10 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              className="border-red-400 text-red-300 hover:bg-red-500 hover:text-white font-bold px-10 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
               onClick={handleDonate}
             >
               <Heart className="mr-2 h-5 w-5" />

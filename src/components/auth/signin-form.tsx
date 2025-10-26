@@ -15,62 +15,23 @@ export function SignInForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-  const [isSignUp, setIsSignUp] = useState(false)
-  const [name, setName] = useState("")
 
-  const handleAuth = async (e: React.FormEvent) => {
+  const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
 
-    if (isSignUp) {
-      // Handle Sign Up
-      try {
-        const res = await fetch('/api/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password, name }),
-        });
+    const res = await signIn('credentials', {
+      redirect: false,
+      email,
+      password,
+    });
 
-        if (res.ok) {
-          // Automatically sign in after successful registration
-          const signInRes = await signIn('credentials', {
-            redirect: false,
-            email,
-            password,
-          });
-
-          if (signInRes?.ok) {
-            window.location.href = "/dashboard";
-          } else {
-            // Handle sign-in error after registration
-            console.error('Sign-in after registration failed');
-            setIsLoading(false);
-          }
-        } else {
-          // Handle registration error
-          const errorData = await res.json();
-          console.error('Registration failed:', errorData.error);
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.error('Registration request failed', error);
-        setIsLoading(false);
-      }
+    if (res?.ok) {
+      window.location.href = "/dashboard";
     } else {
-      // Handle Sign In
-      const res = await signIn('credentials', {
-        redirect: false,
-        email,
-        password,
-      });
-
-      if (res?.ok) {
-        window.location.href = "/dashboard";
-      } else {
-        // Handle error
-        console.error('Sign in failed');
-        setIsLoading(false);
-      }
+      // Handle error
+      console.error('Sign in failed');
+      setIsLoading(false);
     }
   }
 
@@ -85,33 +46,19 @@ export function SignInForm() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl font-bold">
-          {isSignUp ? "Join VotizenKE" : "Welcome to VotizenKE"}
+    <Card className="w-full max-w-md mx-auto shadow-xl border-2 border-gray-200">
+      <CardHeader className="text-center bg-gradient-to-r from-green-50 to-red-50">
+        <CardTitle className="text-3xl font-bold text-gray-900">
+          Welcome Back
         </CardTitle>
-        <CardDescription>
-          {isSignUp ? "Create your account to start your civic journey" : "Sign in to start your civic journey"}
+        <CardDescription className="text-gray-700 text-base">
+          Sign in to continue your civic journey
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <form onSubmit={handleAuth} className="space-y-4">
-          {isSignUp && (
-            <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
-              <Input
-                id="name"
-                type="text"
-                placeholder="Enter your full name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                disabled={isLoading}
-              />
-            </div>
-          )}
+      <CardContent className="space-y-6 pt-6">
+        <form onSubmit={handleSignIn} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-gray-900 font-semibold">Email</Label>
             <Input
               id="email"
               type="email"
@@ -120,10 +67,11 @@ export function SignInForm() {
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={isLoading}
+              className="border-2 border-gray-300 focus:border-green-500"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" className="text-gray-900 font-semibold">Password</Label>
             <Input
               id="password"
               type="password"
@@ -133,31 +81,32 @@ export function SignInForm() {
               required
               disabled={isLoading}
               minLength={6}
+              className="border-2 border-gray-300 focus:border-green-500"
             />
           </div>
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? (isSignUp ? "Creating account..." : "Signing in...") : (isSignUp ? "Sign Up" : "Sign In")}
+          <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 text-lg" disabled={isLoading}>
+            {isLoading ? "Signing in..." : "Sign In"}
           </Button>
         </form>
 
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
+            <span className="w-full border-t-2 border-gray-200" />
           </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">
-              Or continue with
+          <div className="relative flex justify-center text-sm">
+            <span className="bg-white px-4 text-gray-600 font-medium">
+              Or sign in with
             </span>
           </div>
         </div>
 
         <Button 
           variant="outline" 
-          className="w-full" 
+          className="w-full border-2 border-gray-300 hover:bg-gray-50 font-semibold py-3" 
           onClick={handleGoogleSignIn}
           disabled={isLoading}
         >
-          <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
+          <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">
             <path
               d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
               fill="#4285F4"
@@ -175,20 +124,16 @@ export function SignInForm() {
               fill="#EA4335"
             />
           </svg>
-          Google
+          Continue with Google
         </Button>
 
-        <div className="text-center text-sm">
-          <span className="text-muted-foreground">
-            {isSignUp ? "Already have an account? " : "Don\'t have an account? "}
+        <div className="text-center text-sm pt-4 border-t">
+          <span className="text-gray-700 font-medium">
+            Don't have an account?{" "}
           </span>
-          <Button 
-            variant="link" 
-            className="p-0 h-auto text-green-600"
-            onClick={() => setIsSignUp(!isSignUp)}
-          >
-            {isSignUp ? "Sign in" : "Sign up"}
-          </Button>
+          <a href="/auth/signup" className="text-green-600 hover:text-green-700 font-bold hover:underline">
+            Sign up
+          </a>
         </div>
       </CardContent>
     </Card>
